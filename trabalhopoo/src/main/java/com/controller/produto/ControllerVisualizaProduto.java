@@ -254,6 +254,7 @@ public class ControllerVisualizaProduto {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         } catch (Exception e) {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -303,6 +304,7 @@ public class ControllerVisualizaProduto {
                 alertInterface("ERRO", e.getMessage(), AlertType.ERROR);	
             } catch (Exception e) {
                 alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+                System.out.println(e.getMessage());
             }
 
             tableViewInfoCompleta.setItems(observableList);

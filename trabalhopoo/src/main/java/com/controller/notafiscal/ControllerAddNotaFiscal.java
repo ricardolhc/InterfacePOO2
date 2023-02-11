@@ -17,6 +17,7 @@ import com.exceptions.geral.CampoVazioException;
 import com.exceptions.lista.ListaVaziaException;
 import com.exceptions.notafiscal.DataNotSupportedException;
 import com.exceptions.produto.CodigoProdutoNotSupportedException;
+import com.exceptions.produto.ProdutoNotFoundException;
 import com.exceptions.produto.QuantidadeNotSupportedException;
 import com.listas.ListaNotaFiscal;
 import com.listas.ListaProdutos;
@@ -284,8 +285,12 @@ public class ControllerAddNotaFiscal {
 
             limparCampos(null);
             tableProdutos.setItems(observableList);
-        } catch (Exception e) {
+
+        } catch (CampoVazioException | CodigoProdutoNotSupportedException | QuantidadeNotSupportedException | ProdutoNotFoundException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
 
     }
@@ -315,9 +320,19 @@ public class ControllerAddNotaFiscal {
 
             final String mensagemSucesso;
 
+            if (tableProdutos.getItems().size() == 0) {
+                throw new ListaVaziaException("Não é possível salvar uma nota fiscal sem produtos");
+            }
+
+            if (listaItem.isEmpty()) {
+                throw new ListaVaziaException("Não há itens na lista de itens");
+            }
+
             if (datePickerVenda.getValue() == null) {
                 throw new DataNotSupportedException("O campo data não pode estar vazio");
             }
+
+            
 
             localDate = datePickerVenda.getValue();
 
@@ -326,19 +341,11 @@ public class ControllerAddNotaFiscal {
             dataCalendar = Calendar.getInstance();
             dataCalendar.setTime(date);
 
-            if (tableProdutos.getItems().size() == 0) {
-                throw new ListaVaziaException("Não é possível salvar uma nota fiscal sem produtos");
-            }
-
             for (Item item : observableList) {
                 double quantidadeSub = item.getQuantidade();
                 int codigoProduto = item.getCodigo();
 
                 listaProdutos.subQuantidade(codigoProduto, quantidadeSub);
-            }
-
-            if (listaItem.isEmpty()) {
-                throw new ListaVaziaException("Não há itens na lista de itens");
             }
 
             notaFiscal = new NotaFiscal(dataCalendar, listaItem);
@@ -359,8 +366,12 @@ public class ControllerAddNotaFiscal {
                     "\nTotal da nota fiscal: R$" + totalNotaFiscal;
 
             alertInterface("SUCESSO", mensagemSucesso, AlertType.INFORMATION);
-        } catch (Exception e) {
+
+        } catch (DataNotSupportedException | ListaVaziaException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -390,6 +401,7 @@ public class ControllerAddNotaFiscal {
             alertInterface("ERRO", "Selecione um produto para alterar", AlertType.ERROR);
         } catch (Exception e) {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -407,6 +419,7 @@ public class ControllerAddNotaFiscal {
             alertInterface("ERRO", "Selecione um produto para remover", AlertType.ERROR);
         } catch (Exception e) {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 

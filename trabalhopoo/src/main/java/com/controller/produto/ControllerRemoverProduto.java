@@ -128,9 +128,10 @@ public class ControllerRemoverProduto {
             }
 
         } catch (CampoVazioException | CodigoProdutoNotSupportedException | ProdutoNotFoundException e) {
-            alertInterface("Erro!", e.getMessage(), AlertType.ERROR);
+            alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         } catch (Exception e) {
-            alertInterface("Erro!", "Ocorreu um erro inesperado", AlertType.ERROR);
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
