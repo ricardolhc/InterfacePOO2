@@ -134,9 +134,9 @@ public class ControllerAddProduto {
             double quantidadeDouble = 0;
 
             int codigoProdutoAdicionado = 0;
-            int quantidadeInt;
+            int quantidadeInt = 0;
 
-            Produto produto;
+            Produto produto = null;
 
             if (nomeProduto.trim().isEmpty() || nomeProduto == null) {
                 throw new CampoVazioException("Nome do produto não pode ser vazio");
@@ -278,7 +278,7 @@ public class ControllerAddProduto {
      */
     @FXML
     void notHoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: white;");
     }
 
     /**
@@ -288,7 +288,7 @@ public class ControllerAddProduto {
      */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: white;");
     }
 
     /**
@@ -298,7 +298,7 @@ public class ControllerAddProduto {
      */
     @FXML
     void hoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnAdicionar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #2b6b2a;");
     }
 
     /**
@@ -308,7 +308,7 @@ public class ControllerAddProduto {
      */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
     }
 
     /**

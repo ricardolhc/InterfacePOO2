@@ -3,7 +3,8 @@ package com.controller.notafiscal;
 import java.util.Optional;
 
 import com.controller.ControllerMenuPrincipal;
-
+import com.exceptions.notafiscal.CodigoNotaFiscalNotSupportedException;
+import com.exceptions.notafiscal.NotaFiscalNotFoundException;
 import com.listas.ListaNotaFiscal;
 
 import javafx.event.ActionEvent;
@@ -27,8 +28,9 @@ import javafx.scene.layout.Pane;
 
 /**
  * Classe responsável por controlar a tela de remmover de nota fiscal
-* @author Ricardo, Tales, Mateus, Mauricio
-* @since jan 2023
+ * 
+ * @author Ricardo, Tales, Mateus, Mauricio
+ * @since jan 2023
  */
 public class ControllerRemoverNotaFiscal {
 
@@ -77,6 +79,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Método usado para remover a nota fiscal usando o codigo como parâmetro
+     * 
      * @param event evento de clicar no botão
      */
     @FXML
@@ -85,12 +88,13 @@ public class ControllerRemoverNotaFiscal {
         String codigo = textFieldCodigo.getText();
 
         try {
-            
+
+            int codigoInt = 0;
+            Optional<ButtonType> result = null;
+
             if (codigo.trim().isEmpty() || codigo == null) {
                 throw new Exception("Preencha o campo de código!");
             }
-
-            int codigoInt;
 
             try {
                 codigoInt = Integer.parseInt(codigo);
@@ -98,31 +102,36 @@ public class ControllerRemoverNotaFiscal {
                 throw new Exception("O código deve ser um número inteiro!");
             }
 
-            if(codigoInt <= 0) {
+            if (codigoInt <= 0) {
                 throw new Exception("O código deve ser um número inteiro positivo!");
             }
 
-            try {
-                Optional<ButtonType> result = alertInterfaceConfirmacao();
-                
-                if (result.isPresent() && result.get() == ButtonType.OK) {
+            result = alertInterfaceConfirmacao();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
                     listaNotaFiscal.removeNotaFiscal(codigoInt);
-                    limparCampos(null);
-                    alertInterface("Sucesso!", "Produto com código " + codigoInt  + " removido com sucesso!", AlertType.INFORMATION);
+                } catch (Exception e) {
+                    throw e;
                 }
-            } catch (Exception e) {
-                throw e;
+                limparCampos(null);
+                alertInterface("SUCESSO", "Produto com código " + codigoInt + " removido com sucesso!",
+                        AlertType.INFORMATION);
             }
 
-        } catch (Exception e) {
+        } catch (CodigoNotaFiscalNotSupportedException | NotaFiscalNotFoundException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
     /**
-    * Método usado para voltar para a tela principal
-    * @param event evento de clicar no botão
-    */ 
+     * Método usado para voltar para a tela principal
+     * 
+     * @param event evento de clicar no botão
+     */
     @FXML
     void voltarParaPrincipal(MouseEvent event) {
         try {
@@ -138,11 +147,12 @@ public class ControllerRemoverNotaFiscal {
     }
 
     /**
-    * Método usado para mostrar uma mensagem de alerta
-    * @param titulo título da mensagem
-    * @param mensagem mensagem a ser mostrada
-    * @param tipo tipo de alerta
-    */
+     * Método usado para mostrar uma mensagem de alerta
+     * 
+     * @param titulo   título da mensagem
+     * @param mensagem mensagem a ser mostrada
+     * @param tipo     tipo de alerta
+     */
     void alertInterface(String titulo, String mensagem, AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -153,6 +163,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Método usado para mostrar uma mensagem de confirmação
+     * 
      * @return retorna o resultado da confirmação
      */
     Optional<ButtonType> alertInterfaceConfirmacao() {
@@ -164,9 +175,10 @@ public class ControllerRemoverNotaFiscal {
     }
 
     /**
-    * Método usado para limpar os campos de texto
-    * @param event evento de clicar no botão
-    */
+     * Método usado para limpar os campos de texto
+     * 
+     * @param event evento de clicar no botão
+     */
     @FXML
     void limparCampos(ActionEvent event) {
         textFieldCodigo.clear();
@@ -174,6 +186,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Efeito de hover ao passar o mouse do botão de limpar
+     * 
      * @param event efeito de hover ao passar o mouse do botão
      */
     @FXML
@@ -183,6 +196,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Efeito de hover ao passar o mouse do botão de remover
+     * 
      * @param event efeito de hover ao tirar o mouse do botão
      */
     @FXML
@@ -192,6 +206,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Efeito de hover ao tirar o mouse do botão de limpar
+     * 
      * @param event efeito de hover ao tirar o mouse do botão
      */
     @FXML
@@ -201,6 +216,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Efeito de hover ao tirar o mouse do botão de limpar
+     * 
      * @param event efeito de hover ao tirar o mouse do botão
      */
     @FXML
@@ -210,6 +226,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Efeito de hover ao tirar o mouse no botão de voltar
+     * 
      * @param event evento de hover ao passar o mouse no botão
      */
     @FXML
@@ -220,6 +237,7 @@ public class ControllerRemoverNotaFiscal {
 
     /**
      * Efeito de hover ao passar o mouse no botão de voltar
+     * 
      * @param event evento hover ao passar o mouse no botão de voltar
      */
     @FXML

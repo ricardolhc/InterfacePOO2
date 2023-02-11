@@ -22,22 +22,22 @@
          <children>
             <Button fx:id="btnAdicionaProduto" layoutY="20.0" mnemonicParsing="false" onAction="#adicionaProduto" onMouseExited="#notHoverAdicionaProduto" onMouseMoved="#hoverAdicionaProduto" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #370617; -fx-background-radius: 0;" text="Adicionar produto" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <Button fx:id="btnRemoveProduto" layoutY="63.0" mnemonicParsing="false" onAction="#removeProduto" onMouseExited="#notHoverRemoveProduto" onMouseMoved="#hoverRemoveProduto" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #370617; -fx-background-radius: 0;" text="Remover produto" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <Button fx:id="btnVisualizaInformacoesProduto" layoutY="149.0" mnemonicParsing="false" onAction="#visualizaInformacoesProduto" onMouseExited="#notHoverVisualizaInformacoesProduto" onMouseMoved="#hoverVisualizaInformacoesProduto" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #370617; -fx-background-radius: 0;" text="Visualizar informações" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <Button fx:id="btnAlterarInformacoesProduto" layoutY="106.0" mnemonicParsing="false" onAction="#alterarInformacoesProduto" onMouseExited="#notHoverAlteraInformacoesProduto" onMouseMoved="#hoverAlteraInformacoesProduto" prefHeight="31.0" prefWidth="450.0" style="-fx-background-color: #370617; -fx-background-radius: 0;" text="Alterar informações" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
          </children>
@@ -55,22 +55,22 @@
          <children>
             <Button fx:id="btnAdicionaNotaFiscal" layoutY="27.0" mnemonicParsing="false" onAction="#adicionaNotaFiscal" onMouseExited="#notHoverAdicionaNotaFiscal" onMouseMoved="#hoverAdicionaNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Adicionar nova venda" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <Button fx:id="btnRemoveNotaFiscal" layoutY="70.0" mnemonicParsing="false" onAction="#removeNotaFiscal" onMouseExited="#notHoverRemoveNotaFiscal" onMouseMoved="#hoverRemoveNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Remover venda" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <Button fx:id="btnVisualizaInformacoesNotaFiscal" layoutY="156.0" mnemonicParsing="false" onAction="#visualizaInformacoesNotaFiscal" onMouseExited="#notHoverVisualizaInformacoesNotaFiscal" onMouseMoved="#hoverVisualizaInformacoesNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Visualizar informações" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <Button fx:id="btnAlteraInformacoesNotaFiscal" layoutY="113.0" mnemonicParsing="false" onAction="#alteraInformacoesNotaFiscal" onMouseExited="#notHoverAlteraInformacoesNotaFiscal" onMouseMoved="#hoverAlteraInformacoesNotaFiscal" prefHeight="43.0" prefWidth="450.0" style="-fx-background-color: #5c0a27; -fx-background-radius: 0;" text="Alterar informações" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
          </children>

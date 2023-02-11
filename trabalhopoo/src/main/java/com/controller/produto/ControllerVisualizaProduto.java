@@ -203,14 +203,14 @@ public class ControllerVisualizaProduto {
 
         try {
 
-            int codigoInt;
+            int codigoInt = 0;
 
-            Produto produto;
+            Produto produto = null;
 
-            String nomeProduto;
-            String descricaoProduto;
-            double precoProduto;
-            double quantidadeProduto;
+            String nomeProduto = null;
+            String descricaoProduto = null;
+            double precoProduto = 0;
+            double quantidadeProduto = 0;
 
             if(codigo.trim().isEmpty()) {
                 throw new CampoVazioException("Preencha o campo Código");
@@ -363,7 +363,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void notHoverBtnInformacaoProduto(MouseEvent event) {
-        btnInformacaoProduto.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoProduto.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -372,7 +372,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void notHoverBtnInformacaoTodosProdutos(MouseEvent event) {
-        btnInformacaoTodosProdutos.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoTodosProdutos.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -381,7 +381,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -390,7 +390,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void notHoverBtnPesquisar(MouseEvent event) {
-        btnPesquisar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnPesquisar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -399,7 +399,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void hoverBtnInformacaoProduto(MouseEvent event) {
-        btnInformacaoProduto.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoProduto.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #2b6b2a;");
     }
 
     /**
@@ -408,7 +408,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void hoverBtnInformacaoTodosProdutos(MouseEvent event) {
-        btnInformacaoTodosProdutos.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoTodosProdutos.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #2b6b2a;");
     }
 
     /**
@@ -417,7 +417,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
     }
 
     /**
@@ -426,7 +426,7 @@ public class ControllerVisualizaProduto {
      */
     @FXML
     void hoverBtnPesquisar(MouseEvent event) {
-        btnPesquisar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnPesquisar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823");
     }
 
     /**

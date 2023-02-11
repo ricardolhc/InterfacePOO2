@@ -173,6 +173,66 @@ public class ControllerMenuPrincipal {
     }
 
     /**
+     * Método usado para acessar o menu de remover nota fiscal
+     * @param event evento de clique
+     */
+    @FXML
+    void removeNotaFiscal(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/NotaFiscal/viewRemoverNotaFiscal.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+        }
+    }
+
+    /**
+     * Método usado para acessar o menu de remover produto
+     * @param event evento de clique
+     */
+    @FXML
+    void removeProduto(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewRemoverProduto.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+        }
+    }
+
+    /**
+     * Método usado para acessar o menu de visualizar informações de nota fiscal
+     * @param event evento de clique
+     */
+    @FXML
+    void visualizaInformacoesNotaFiscal(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/notafiscal/viewVisualizaVenda.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de visualizar vendas", AlertType.ERROR);
+        }
+    }
+
+    /**
+     * Método usado para acessar o menu de visualizar informações de produto
+     * @param event evento de clique
+     */
+    @FXML
+    void visualizaInformacoesProduto(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewVisualizaProdutos.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.out.println(e);
+            alertInterface("ERRO", "Não foi possível entrar na tela de visualizar informações do produto", AlertType.ERROR);
+        }
+    }
+
+    /**
      * Método usado para fechar o menu de nota fiscal
      * @param event evento de clique
      */
@@ -196,7 +256,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverAdicionaNotaFiscal(MouseEvent event) {
-        btnAdicionaNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
+        btnAdicionaNotaFiscal.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #3e081a;");
     }
 
     /**
@@ -205,7 +265,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverAdicionaProduto(MouseEvent event) {
-        btnAdicionaProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
+        btnAdicionaProduto.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #5c0a27;");
     }
 
     /**
@@ -214,7 +274,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverAlteraInformacoesNotaFiscal(MouseEvent event) {
-        btnAlteraInformacoesNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
+        btnAlteraInformacoesNotaFiscal.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #3e081a;");
     }
 
     /**
@@ -223,7 +283,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverAlteraInformacoesProduto(MouseEvent event) {
-        btnAlterarInformacoesProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
+        btnAlterarInformacoesProduto.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #5c0a27;");
     }
 
     /**
@@ -232,7 +292,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverRemoveNotaFiscal(MouseEvent event) {
-        btnRemoveNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
+        btnRemoveNotaFiscal.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #3e081a;");
     }
 
     /**
@@ -241,7 +301,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverRemoveProduto(MouseEvent event) {
-        btnRemoveProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
+        btnRemoveProduto.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #5c0a27;");
     }
 
     /**
@@ -250,7 +310,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverVisualizaInformacoesNotaFiscal(MouseEvent event) {
-        btnVisualizaInformacoesNotaFiscal.setStyle("-fx-background-color: #3e081a; -fx-cursor: hand;");
+        btnVisualizaInformacoesNotaFiscal.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #3e081a;");
     }
 
     /**
@@ -259,7 +319,7 @@ public class ControllerMenuPrincipal {
      */
     @FXML
     void hoverVisualizaInformacoesProduto(MouseEvent event) {
-        btnVisualizaInformacoesProduto.setStyle("-fx-background-color: #5c0a27; -fx-cursor: hand;");
+        btnVisualizaInformacoesProduto.setStyle("-fx-background-color: white; -fx-cursor: hand; -fx-text-fill: #5c0a27;");
     }
 
     /**
@@ -350,66 +410,6 @@ public class ControllerMenuPrincipal {
     @FXML
     void notHoverVisualizaInformacoesProduto(MouseEvent event) {
         btnVisualizaInformacoesProduto.setStyle("-fx-background-color: #370617");
-    }
-
-    /**
-     * Método usado para acessar o menu de remover nota fiscal
-     * @param event evento de clique
-     */
-    @FXML
-    void removeNotaFiscal(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/NotaFiscal/viewRemoverNotaFiscal.fxml"));
-            rootPane.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.out.println(e);
-            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
-        }
-    }
-
-    /**
-     * Método usado para acessar o menu de remover produto
-     * @param event evento de clique
-     */
-    @FXML
-    void removeProduto(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewRemoverProduto.fxml"));
-            rootPane.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.out.println(e);
-            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
-        }
-    }
-
-    /**
-     * Método usado para acessar o menu de visualizar informações de nota fiscal
-     * @param event evento de clique
-     */
-    @FXML
-    void visualizaInformacoesNotaFiscal(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/notafiscal/viewVisualizaVenda.fxml"));
-            rootPane.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.out.println(e);
-            alertInterface("ERRO", "Não foi possível entrar na tela de visualizar vendas", AlertType.ERROR);
-        }
-    }
-
-    /**
-     * Método usado para acessar o menu de visualizar informações de produto
-     * @param event evento de clique
-     */
-    @FXML
-    void visualizaInformacoesProduto(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("../views/produto/viewVisualizaProdutos.fxml"));
-            rootPane.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.out.println(e);
-            alertInterface("ERRO", "Não foi possível entrar na tela de visualizar informações do produto", AlertType.ERROR);
-        }
     }
 
      /**

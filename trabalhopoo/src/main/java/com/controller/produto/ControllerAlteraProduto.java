@@ -171,13 +171,14 @@ public class ControllerAlteraProduto {
 
         try {
 
-            int codigoInt;
-            Produto produto;
+            int codigoInt = 0;
 
-            String nomeProduto;
-            String descricaoProduto;
-            double precoProduto;
-            double quantidadeProduto;
+            Produto produto = null;
+
+            String nomeProduto = null;
+            String descricaoProduto = null;
+            double precoProduto = 0;
+            double quantidadeProduto = 0;
 
             if (codigo.trim().isEmpty() || codigo == null) {
                 throw new CampoVazioException("Campo código deve ser preenchido com um inteiro!");
@@ -243,11 +244,11 @@ public class ControllerAlteraProduto {
 
         try {
 
-            double precoDouble;
-            double quantidadeDouble;
-            int codigoInt;
+            double precoDouble = 0;
+            double quantidadeDouble = 0;
+            int codigoInt = 0;
 
-            Produto produto;
+            Produto produto = null;
 
             if (nome.trim().isEmpty()) {
                 throw new CampoVazioException("Campo nome deve ser preenchido!");
@@ -393,7 +394,7 @@ public class ControllerAlteraProduto {
      */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
     }
 
     /**
@@ -403,12 +404,12 @@ public class ControllerAlteraProduto {
      */
     @FXML
     void hoverBtnProcurar(MouseEvent event) {
-        btnProcurar.setStyle("-fx-background-color: #676508;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnProcurar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
     }
 
     @FXML
     void hoverBtnSalvar(MouseEvent event) {
-        btnSalvar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnSalvar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #2b6b2a;");
     }
 
     /**
@@ -418,7 +419,7 @@ public class ControllerAlteraProduto {
      */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -428,7 +429,7 @@ public class ControllerAlteraProduto {
      */
     @FXML
     void notHoverBtnProcurar(MouseEvent event) {
-        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -438,7 +439,7 @@ public class ControllerAlteraProduto {
      */
     @FXML
     void notHoverBtnSalvar(MouseEvent event) {
-        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**

@@ -12,51 +12,16 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.produto.ControllerAddProduto">
    <children>
-      <Label layoutX="289.0" layoutY="27.0" prefHeight="54.0" prefWidth="366.0" text="Adicionar Produto" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textFieldPreco" layoutX="43.0" layoutY="300.0" prefHeight="30.0" prefWidth="311.0" promptText="Digite o preço" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <TextField fx:id="textFieldNome" layoutX="50.0" layoutY="124.0" prefHeight="40.0" prefWidth="800.0" promptText="Digite o nome completo" style="-fx-background-radius: 5; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="textFieldNome" layoutX="43.0" layoutY="124.0" prefHeight="30.0" prefWidth="810.0" promptText="Digite o nome completo" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <TextField fx:id="textFieldQuantidade" layoutX="50.0" layoutY="215.0" prefHeight="30.0" prefWidth="419.0" promptText="Digite a quantidade (Exemplo: 5 ou 5.5)" style="-fx-background-radius: 5; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="50.0" layoutY="98.0" text="Nome" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textFieldQuantidade" layoutX="43.0" layoutY="215.0" prefHeight="30.0" prefWidth="419.0" promptText="Digite a quantidade (Exemplo: 5 ou 5.5)" style="-fx-background-radius: 20; -fx-background-color: white;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label layoutX="52.0" layoutY="189.0" text="Quantidade" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="594.0" layoutY="202.0" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnAdicionar" layoutX="514.0" layoutY="520.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnLimpar" layoutX="289.0" layoutY="520.0" mnemonicParsing="false" onAction="#limparCampos" onMouseExited="#notHoverBtnLimpar" onMouseMoved="#hoverBtnLimpar" prefHeight="46.0" prefWidth="133.0" style="-fx-background-radius: 50; -fx-background-color: #747474;" text="Limpar" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       <RadioButton fx:id="radioButtonUnidade" layoutX="544.0" layoutY="226.0" mnemonicParsing="false" onAction="#radioButtonUnidadeClick" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -67,6 +32,45 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
+      <TextField fx:id="textFieldPreco" layoutX="50.0" layoutY="300.0" prefHeight="30.0" prefWidth="311.0" promptText="Digite o preço" style="-fx-background-radius: 5; -fx-background-color: white;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextArea fx:id="textFieldDescricao" layoutX="52.0" layoutY="390.0" prefHeight="95.0" prefWidth="800.0" promptText="Digite a descrição do produto">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
+      <Button fx:id="btnAdicionar" layoutX="514.0" layoutY="520.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLimpar" layoutX="289.0" layoutY="520.0" mnemonicParsing="false" onAction="#limparCampos" onMouseExited="#notHoverBtnLimpar" onMouseMoved="#hoverBtnLimpar" prefHeight="46.0" prefWidth="133.0" style="-fx-background-radius: 5; -fx-background-color: #747474;" text="Limpar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="289.0" layoutY="27.0" prefHeight="54.0" prefWidth="366.0" text="Adicionar Produto" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="98.0" text="Nome" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="189.0" text="Quantidade" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="594.0" layoutY="202.0" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
       <Label layoutX="52.0" layoutY="345.0" textFill="WHITE">
          <font>
             <Font size="16.0" />
@@ -87,8 +91,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextArea fx:id="textFieldDescricao" layoutX="50.0" layoutY="390.0" prefHeight="95.0" prefWidth="448.0" promptText="Digite a descrição do produto" />
-      <Label layoutX="50.0" layoutY="358.0" text="Descrição do produto" textFill="WHITE">
+      <Label layoutX="53.0" layoutY="358.0" text="Descrição do produto" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

@@ -100,8 +100,8 @@ public class ControllerRemoverProduto {
         try {
 
             int codigoInt = 0;
-            Produto produto;
-            Optional<ButtonType> result;
+            Produto produto = null;
+            Optional<ButtonType> result = null;
 
             if (codigo.trim().isEmpty() || codigo == null) {
                 throw new CampoVazioException("Preencha o campo de código!");
@@ -193,7 +193,7 @@ public class ControllerRemoverProduto {
      */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
     }
 
     /**
@@ -202,7 +202,7 @@ public class ControllerRemoverProduto {
      */
     @FXML
     void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnRemover.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #7d2727;");
     }
 
     /**
@@ -211,7 +211,7 @@ public class ControllerRemoverProduto {
      */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -220,7 +220,7 @@ public class ControllerRemoverProduto {
      */
     @FXML
     void notHoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**

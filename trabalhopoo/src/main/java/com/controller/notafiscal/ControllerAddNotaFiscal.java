@@ -13,12 +13,15 @@ import com.baseclasse.Produto;
 import com.baseclasse.ProdutoUnidade;
 
 import com.controller.ControllerMenuPrincipal;
+
 import com.exceptions.geral.CampoVazioException;
 import com.exceptions.lista.ListaVaziaException;
+import com.exceptions.notafiscal.AddNotaFiscalException;
 import com.exceptions.notafiscal.DataNotSupportedException;
 import com.exceptions.produto.CodigoProdutoNotSupportedException;
 import com.exceptions.produto.ProdutoNotFoundException;
 import com.exceptions.produto.QuantidadeNotSupportedException;
+
 import com.listas.ListaNotaFiscal;
 import com.listas.ListaProdutos;
 
@@ -196,17 +199,17 @@ public class ControllerAddNotaFiscal {
 
         try {
 
-            double quantidadeDouble;
+            double quantidadeDouble = 0;
             double quantidadeTotal = 0;
 
             boolean flag = true;
 
-            int codigoInt;
+            int codigoInt = 0;
 
-            Produto produto;
-            ObservableList<Item> observableList;
+            Produto produto = null;
+            ObservableList<Item> observableList = null;
 
-            Item item;
+            Item item = null;
             Item itemLista = null;
 
             if (codigo.trim().isEmpty() || codigo == null) {
@@ -307,16 +310,16 @@ public class ControllerAddNotaFiscal {
 
         try {
 
-            LocalDate localDate;
-            Date date;
-            Calendar dataCalendar;
+            LocalDate localDate = null;
+            Date date = null;
+            Calendar dataCalendar = null;
 
-            NotaFiscal notaFiscal;
+            NotaFiscal notaFiscal = null;
 
-            String codigoNotaFiscal;
-            String dataString;
-            int variedadeProdutos;
-            double totalNotaFiscal;
+            String codigoNotaFiscal = null;
+            String dataString = null;
+            int variedadeProdutos = 0;
+            double totalVendaNotaFiscal = 0;
 
             final String mensagemSucesso;
 
@@ -331,8 +334,6 @@ public class ControllerAddNotaFiscal {
             if (datePickerVenda.getValue() == null) {
                 throw new DataNotSupportedException("O campo data não pode estar vazio");
             }
-
-            
 
             localDate = datePickerVenda.getValue();
 
@@ -349,13 +350,22 @@ public class ControllerAddNotaFiscal {
             }
 
             notaFiscal = new NotaFiscal(dataCalendar, listaItem);
-            listaNotaFiscal.addNotaFiscal(notaFiscal);
+
+            try {
+                listaNotaFiscal.addNotaFiscal(notaFiscal);
+            } catch (Exception e) {
+                throw e;
+            }
 
             codigoNotaFiscal = notaFiscal.getCodigo() + "";
             dataString = notaFiscal.getDataFormatada();
             variedadeProdutos = tableProdutos.getItems().size();
-            totalNotaFiscal = notaFiscal.getTotal();
-
+            try {
+                totalVendaNotaFiscal = notaFiscal.getTotal();
+            } catch (Exception e) {
+                throw e;
+            }
+            
             textFieldCodigo.clear();
             textFieldQuantidade.clear();
             tableProdutos.getItems().clear();
@@ -363,11 +373,11 @@ public class ControllerAddNotaFiscal {
 
             mensagemSucesso = "Venda adicionada com sucesso.\n\nCódigo da nota fiscal: " + codigoNotaFiscal +
                     "\nData da venda: " + dataString + "\nVariedade de produtos: " + variedadeProdutos +
-                    "\nTotal da nota fiscal: R$" + totalNotaFiscal;
+                    "\nTotal da nota fiscal: R$" + totalVendaNotaFiscal;
 
             alertInterface("SUCESSO", mensagemSucesso, AlertType.INFORMATION);
 
-        } catch (DataNotSupportedException | ListaVaziaException e) {
+        } catch (DataNotSupportedException | ListaVaziaException | AddNotaFiscalException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         } catch (Exception e) {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
@@ -474,7 +484,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void notHoverBtnAlterar(MouseEvent event) {
-        btnAlterarProduto.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnAlterarProduto.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -484,7 +494,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void hoverBtnAlterar(MouseEvent event) {
-        btnAlterarProduto.setStyle("-fx-background-color: #676508;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnAlterarProduto.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
     }
 
     /**
@@ -494,7 +504,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void notHoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -504,7 +514,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnRemover.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #682121;");
     }
 
     /**
@@ -514,7 +524,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void notHoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnAdicionar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -524,7 +534,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -534,7 +544,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void notHoverBtnConcluir(MouseEvent event) {
-        btnConcluir.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnConcluir.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -544,7 +554,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void hoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnAdicionar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
@@ -554,7 +564,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void hoverBtnConcluir(MouseEvent event) {
-        btnConcluir.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnConcluir.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
@@ -564,7 +574,7 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #686868;");
     }
 
     /**

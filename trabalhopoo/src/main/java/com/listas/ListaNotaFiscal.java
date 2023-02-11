@@ -226,4 +226,8 @@ public class ListaNotaFiscal implements INotasFiscais {
         return data;
     }
 
+    public boolean isEmpty() {
+        return listaNotaFiscal.isEmpty();
+    }
+
 }

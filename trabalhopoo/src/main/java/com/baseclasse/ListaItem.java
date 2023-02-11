@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.exceptions.item.ItemNotFoundException;
 import com.exceptions.item.ItemNotSupportedException;
+import com.exceptions.lista.ListaVaziaException;
 
 /**
 * Classe responsável por controlar a lista de itens<br>
@@ -67,8 +68,8 @@ public class ListaItem {
     public double getTotal() {
         double total = 0;
 
-        if(listaItens == null || listaItens.size() == 0) {
-            throw new IllegalArgumentException("Não foi possível obter o total, pois a lista de itens está vazia.");
+        if(listaItens == null || listaItens.isEmpty()) {
+            throw new ListaVaziaException("Não foi possível obter o total, pois a lista de itens está vazia.");
         }
 
         for (Item item : listaItens) {

@@ -15,7 +15,11 @@ import com.baseclasse.ListaItem;
 import com.baseclasse.NotaFiscal;
 
 import com.controller.ControllerMenuPrincipal;
-
+import com.exceptions.geral.CampoVazioException;
+import com.exceptions.lista.ListaVaziaException;
+import com.exceptions.notafiscal.CodigoNotaFiscalNotSupportedException;
+import com.exceptions.notafiscal.DataNotSupportedException;
+import com.exceptions.notafiscal.NotaFiscalNotFoundException;
 import com.listas.ListaNotaFiscal;
 
 import javafx.event.ActionEvent;
@@ -361,7 +365,6 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void informacaoTodasNotas(ActionEvent event) {
-
         if (paneInformacoesUmaNota.isVisible() || paneDiaEspecifico.isVisible()) {
             paneInformacoesUmaNota.setVisible(false);
             paneDiaEspecifico.setVisible(false);
@@ -373,24 +376,26 @@ public class ControllerVisualizaVenda {
         paneTodasNotas.setVisible(informacoesTodasNotasFiscais);
         informacoesTodasNotasFiscais = !informacoesTodasNotasFiscais;
 
-        try {
-            if (paneTodasNotas.isVisible()) {
-                ObservableList<NotaFiscal> observableList = FXCollections.observableArrayList();
+        if (paneTodasNotas.isVisible()) {
+            ObservableList<NotaFiscal> observableList = FXCollections.observableArrayList();
 
-                if (listaNotaFiscal.getArray().size() == 0) {
-                    throw new Exception("Não há notas fiscais cadastradas");
+            try {
+                if (listaNotaFiscal.isEmpty()) {
+                    throw new ListaVaziaException("Não há notas fiscais cadastradas");
                 }
 
                 for (NotaFiscal notaFiscal : listaNotaFiscal.getArray()) {
                     observableList.add(notaFiscal);
                 }
-
-                tableTodasNotas.setItems(observableList);
+            } catch (ListaVaziaException e) {
+                alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+            } catch (Exception e) {
+                alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+                System.out.println(e.getMessage());
             }
-        } catch (Exception e) {
-            alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
-        }
 
+            tableTodasNotas.setItems(observableList);
+        }
     }
 
     /**
@@ -421,35 +426,56 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void procurarNotaFiscalDia(ActionEvent event) {
+
+
+
         try {
 
-            if (datePickerVendaDia.getValue() == null) {
-                throw new Exception("O campo de data não pode estar vazio");
-            }
-
-            LocalDate localDate = datePickerVendaDia.getValue();
-
-            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-            Calendar dataCalendar = Calendar.getInstance();
-            dataCalendar.setTime(date);
-
-            ArrayList<NotaFiscal> notasFicais = listaNotaFiscal.getNotasFiscaisPorData(dataCalendar);
-
-            ObservableList<NotaFiscal> observableList = FXCollections.observableArrayList();
+            LocalDate localDate;
+            Date date;
+            Calendar dataCalendar;
+            ArrayList<NotaFiscal> notasFicais;
+            ObservableList<NotaFiscal> observableList;
 
             double totalNotas = 0;
 
-            for (NotaFiscal notaFiscal : notasFicais) {
-                totalNotas += notaFiscal.getTotal();
-                observableList.add(notaFiscal);
+            if (datePickerVendaDia.getValue() == null) {
+                throw new CampoVazioException("O campo de data não pode estar vazio");
+            }
+
+            localDate = datePickerVendaDia.getValue();
+
+            date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            dataCalendar = Calendar.getInstance();
+            dataCalendar.setTime(date);
+
+            try {
+                notasFicais = listaNotaFiscal.getNotasFiscaisPorData(dataCalendar);
+            } catch (Exception e) {
+                throw e;
+            }
+
+            observableList = FXCollections.observableArrayList();
+
+            try {
+                for (NotaFiscal notaFiscal : notasFicais) {
+                    totalNotas += notaFiscal.getTotal();
+                    observableList.add(notaFiscal);
+                }
+            } catch (Exception e) {
+                throw e;
             }
 
             tableNotasDia.setItems(observableList);
             textFieldTotalVendidoNotaDia.setText(totalNotas + "");
             textFieldQuantidadeNotas.setText(notasFicais.size() + "");
-        } catch (Exception e) {
+
+        } catch (CampoVazioException | NotaFiscalNotFoundException | DataNotSupportedException | ListaVaziaException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -463,33 +489,52 @@ public class ControllerVisualizaVenda {
         String codigoNF = textFieldCodigo.getText();
 
         try {
-            if (codigoNF.trim().isEmpty() || codigoNF == null) {
-                throw new Exception("O campo de código da nota fiscal não pode estar vazio");
-            }
 
-            int codigoNFInt;
+            int codigoNFInt = 0;
+
+            NotaFiscal notaFiscal = null;
+            ListaItem listaItem = null;
+            double totalVendaNotaFiscal = 0;
+
+            Calendar data = null;
+            Instant instant = null;
+            LocalDate dataLocalDate = null;
+
+            ObservableList<Item> observableList = FXCollections.observableArrayList();
+
+         
+
+            if (codigoNF.trim().isEmpty() || codigoNF == null) {
+                throw new CampoVazioException("O campo de código da nota fiscal não pode estar vazio");
+            }
 
             try {
                 codigoNFInt = Integer.parseInt(codigoNF);
             } catch (Exception e) {
-                throw new Exception("O campo de código da nota fiscal deve ser um número inteiro");
+                throw new CodigoNotaFiscalNotSupportedException("O campo de código da nota fiscal deve ser um número inteiro");
             }
 
             if (codigoNFInt <= 0) {
-                throw new Exception("O campo de código da nota fiscal deve ser um número inteiro maior que zero");
+                throw new CodigoNotaFiscalNotSupportedException("O campo de código da nota fiscal deve ser um número inteiro maior que zero");
             }
 
-            NotaFiscal notaFiscal = listaNotaFiscal.getNotaFiscal(codigoNFInt);
+            try {
+                notaFiscal = listaNotaFiscal.getNotaFiscal(codigoNFInt);
+            } catch (Exception e) {
+                throw e;
+            }
 
-            double totalNota = notaFiscal.getTotal();
+            try {
+                totalVendaNotaFiscal = notaFiscal.getTotal();
+            } catch (Exception e) {
+                throw e;
+            }
+            
+            data = notaFiscal.getData();
+            instant = data.toInstant();
+            dataLocalDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
 
-            Calendar data = notaFiscal.getData();
-            Instant instant = data.toInstant();
-            LocalDate dataLocalDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-
-            ObservableList<Item> observableList = FXCollections.observableArrayList();
-
-            ListaItem listaItem = notaFiscal.getItens();
+            listaItem = notaFiscal.getItens();
 
             for (Item item : listaItem.getArray()) {
                 observableList.add(item);
@@ -497,10 +542,14 @@ public class ControllerVisualizaVenda {
 
             datePickerVenda.setValue(dataLocalDate);
             textFieldTotalVendidoNota.clear();
-            textFieldTotalVendidoNota.setText(totalNota + "");
+            textFieldTotalVendidoNota.setText(totalVendaNotaFiscal + "");
             tableProdutos.setItems(observableList);
-        } catch (Exception e) {
+
+        } catch (CodigoNotaFiscalNotSupportedException | CampoVazioException | NotaFiscalNotFoundException | ListaVaziaException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -546,7 +595,7 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void notHoverbtnInformacaoNotaFiscal(MouseEvent event) {
-        btnInformacaoNotaFiscal.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoNotaFiscal.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -557,7 +606,7 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void hoverbtnInformacaoNotaFiscal(MouseEvent event) {
-        btnInformacaoNotaFiscal.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoNotaFiscal.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
@@ -568,7 +617,7 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void notHoverBtnInformacaoTodasNotas(MouseEvent event) {
-        btnInformacaoTodasNotas.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoTodasNotas.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -580,7 +629,7 @@ public class ControllerVisualizaVenda {
     @FXML
     void hoverBtnInformacaoDiaEspecifico(MouseEvent event) {
         btnInformacaoDiaEspecifico
-                .setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+                .setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
@@ -592,7 +641,7 @@ public class ControllerVisualizaVenda {
     @FXML
     void notHoverBtnInformacaoDiaEspecifico(MouseEvent event) {
         btnInformacaoDiaEspecifico
-                .setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+                .setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -603,7 +652,7 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void hoverBtnInformacaoTodasNotas(MouseEvent event) {
-        btnInformacaoTodasNotas.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnInformacaoTodasNotas.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
@@ -615,7 +664,7 @@ public class ControllerVisualizaVenda {
     @FXML
     void notHoverBtnProcurarNotaFiscalUnica(MouseEvent event) {
         btnProcurarNotaFiscalUnica
-                .setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+                .setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -627,7 +676,7 @@ public class ControllerVisualizaVenda {
     @FXML
     void hoverBtnProcurarNotaFiscalUnica(MouseEvent event) {
         btnProcurarNotaFiscalUnica
-                .setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+                .setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
@@ -638,7 +687,7 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void notHoverBtnProcurarNotaFiscalDia(MouseEvent event) {
-        btnProcurarNotaFiscalDia.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnProcurarNotaFiscalDia.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -649,7 +698,7 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void hoverBtnProcurarNotaFiscalDia(MouseEvent event) {
-        btnProcurarNotaFiscalDia.setStyle("-fx-background-color: #245823;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnProcurarNotaFiscalDia.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**
