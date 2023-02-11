@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.notafiscal.ControllerAlterarNotaFiscal">
+   <children>
+      <Label layoutX="194.0" layoutY="14.0" prefHeight="54.0" prefWidth="513.0" text="Alterar Informações Da Venda" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSalvar" layoutX="626.0" layoutY="524.0" mnemonicParsing="false" onAction="#salvarAlteracaoProduto" onMouseExited="#notHoverBtnSalvar" onMouseMoved="#hoverBtnSalvar" prefHeight="46.0" prefWidth="210.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Salvar Alteração" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Pane fx:id="salvarAltera" layoutX="53.0" layoutY="147.0" prefHeight="358.0" prefWidth="830.0">
+         <children>
+            <TextField fx:id="textFieldQuantidade" layoutX="280.0" layoutY="63.0" prefHeight="40.0" prefWidth="344.0" promptText="Digite a quantidade (Exemplo: 5 ou 5.5)" style="-fx-background-radius: 20; -fx-background-color: white;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="280.0" layoutY="36.0" text="Quantidade" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnProcurar" layoutX="398.0" layoutY="-17.0" mnemonicParsing="false" onAction="#procurarVenda" onMouseExited="#notHoverBtnProcurar" onMouseMoved="#hoverBtnProcurar" prefHeight="46.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-background-color: #807d0a;" text="Procurar Venda" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="12.0" layoutY="36.0" text="Código do produto" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableProdutos" layoutX="10.0" layoutY="125.0" prefHeight="232.0" prefWidth="771.0">
+               <columns>
+                  <TableColumn fx:id="tableColumnCodigo" prefWidth="129.5999984741211" text="Código" />
+                  <TableColumn fx:id="tableColumnNome" prefWidth="232.0" text="Nome Produto" />
+                  <TableColumn fx:id="tableColumnPreco" prefWidth="140.80007934570312" text="Preço" />
+                  <TableColumn fx:id="tableColumnQuantidade" prefWidth="283.199951171875" text="Quantidade" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnAdicionarProduto" layoutX="644.0" layoutY="58.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="137.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <DatePicker fx:id="datePickerVenda" layoutX="606.0" layoutY="-14.0" prefHeight="40.0" prefWidth="175.0" />
+         </children>
+      </Pane>
+      <ImageView fx:id="btnVoltar" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="29.0" onMouseClicked="#voltarParaPrincipal" onMouseExited="#notHoverBtnVoltar" onMouseMoved="#hoverBtnVoltar">
+         <image>
+            <Image url="@../../views/images/pngVoltar.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textFieldCodigo" layoutX="63.0" layoutY="134.0" prefHeight="40.0" prefWidth="334.0" promptText="Digite o código da venda" style="-fx-background-radius: 20; -fx-background-color: white;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="63.0" layoutY="108.0" text="Código Venda" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldCodigoProduto" layoutX="63.0" layoutY="210.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite o código do produto" style="-fx-background-radius: 20; -fx-background-color: white;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnAlterarProduto" layoutX="63.0" layoutY="524.0" mnemonicParsing="false" onAction="#alterarProduto" onMouseExited="#notHoverBtnAlterar" onMouseMoved="#hoverBtnAlterar" prefHeight="46.0" prefWidth="210.0" style="-fx-background-radius: 50; -fx-background-color: #807d0a;" text="Alterar Produto" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRemover" layoutX="352.0" layoutY="524.0" mnemonicParsing="false" onAction="#removerProduto" onMouseExited="#notHoverBtnRemover" onMouseMoved="#hoverBtnRemover" prefHeight="46.0" prefWidth="195.0" style="-fx-background-radius: 50; -fx-background-color: #7d2727;" text="Remover Produto" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="658.0" layoutY="108.0" text="Data Venda" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

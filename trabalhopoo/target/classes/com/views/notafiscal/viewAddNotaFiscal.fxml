@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.notafiscal.ControllerAddNotaFiscal">
+   <children>
+      <Label layoutX="342.0" layoutY="27.0" prefHeight="54.0" prefWidth="212.0" text="Nova Venda" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldCodigo" layoutX="54.0" layoutY="124.0" prefHeight="40.0" prefWidth="265.0" promptText="Digite o código do produto" style="-fx-background-radius: 20; -fx-background-color: white;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="54.0" layoutY="98.0" text="Código Produto" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldQuantidade" layoutX="345.0" layoutY="124.0" prefHeight="40.0" prefWidth="338.0" promptText="Digite a quantidade (Exemplo: 5 ou 5.5)" style="-fx-background-radius: 20; -fx-background-color: white;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="348.0" layoutY="98.0" text="Quantidade" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="594.0" layoutY="202.0" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAdicionar" layoutX="447.0" layoutY="179.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLimpar" layoutX="298.0" layoutY="179.0" mnemonicParsing="false" onAction="#limparCampos" onMouseExited="#notHoverBtnLimpar" onMouseMoved="#hoverBtnLimpar" prefHeight="46.0" prefWidth="133.0" style="-fx-background-radius: 50; -fx-background-color: #747474;" text="Limpar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="52.0" layoutY="345.0" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnVoltar" fitHeight="50.0" fitWidth="50.0" layoutX="38.0" layoutY="29.0" onMouseClicked="#voltarParaPrincipal" onMouseExited="#notHoverBtnVoltar" onMouseMoved="#hoverBtnVoltar">
+         <image>
+            <Image url="@../../views/images/pngVoltar.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnConcluir" layoutX="648.0" layoutY="534.0" mnemonicParsing="false" onAction="#adicionarVenda" onMouseExited="#notHoverBtnConcluir" onMouseMoved="#hoverBtnConcluir" prefHeight="46.0" prefWidth="196.0" style="-fx-background-radius: 50; -fx-background-color: #2b6b2a;" text="Concluir Venda" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAlterarProduto" layoutX="53.0" layoutY="534.0" mnemonicParsing="false" onAction="#alterarProduto" onMouseExited="#notHoverBtnAlterar" onMouseMoved="#hoverBtnAlterar" prefHeight="46.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-background-color: #807d0a;" text="Alterar Produto" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRemover" layoutX="381.0" layoutY="534.0" mnemonicParsing="false" onAction="#removerProduto" onMouseExited="#notHoverBtnRemover" onMouseMoved="#hoverBtnRemover" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 50; -fx-background-color: #7d2727;" text="Remover" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableProdutos" layoutX="54.0" layoutY="251.0" prefHeight="254.0" prefWidth="789.0">
+        <columns>
+          <TableColumn fx:id="tableColumnCodigo" prefWidth="129.5999984741211" text="Código" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="185.5999755859375" text="Nome Produto" />
+            <TableColumn fx:id="tableColumnPreco" prefWidth="140.0" text="Preço" />
+            <TableColumn fx:id="tableColumnQuantidade" prefWidth="161.60000610351562" text="Quantidade" />
+            <TableColumn fx:id="tableColumnDescricao" prefWidth="170.39990234375" text="Descrição" />
+        </columns>
+      </TableView>
+      <DatePicker fx:id="datePickerVenda" layoutX="710.0" layoutY="125.0" prefHeight="40.0" prefWidth="134.0" />
+      <Label layoutX="710.0" layoutY="98.0" text="Data Venda" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
