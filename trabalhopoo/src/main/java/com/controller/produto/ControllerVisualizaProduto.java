@@ -24,7 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -138,7 +137,7 @@ public class ControllerVisualizaProduto {
      * textFieldDescricao usado para receber a descrição do produto
      */
     @FXML
-    private TextArea textFieldDescricao;
+    private TextField textFieldDescricao;
 
     /**
      * textFieldNome usado para receber o nome do produto

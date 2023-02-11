@@ -41,7 +41,7 @@
       </Button>
       <Pane fx:id="paneTodasNotas" layoutY="186.0" prefHeight="414.0" prefWidth="900.0" visible="false">
          <children>
-            <TableView fx:id="tableTodasNotas" disable="true" layoutX="261.0" layoutY="14.0" prefHeight="338.0" prefWidth="378.0">
+            <TableView fx:id="tableTodasNotas" layoutX="261.0" layoutY="14.0" prefHeight="338.0" prefWidth="378.0">
               <columns>
                 <TableColumn fx:id="tableColumnCodigoNotaFiscalTodas" prefWidth="115.99996185302734" text="Código" />
                 <TableColumn fx:id="tableColumnDataNotaFiscalTodas" prefWidth="261.1999816894531" text="Data Venda" />
@@ -57,7 +57,7 @@
                </font>
             </Button>
             <DatePicker fx:id="datePickerVendaDia" layoutX="38.0" layoutY="54.0" prefHeight="40.0" prefWidth="140.0" />
-            <TableView fx:id="tableNotasDia" disable="true" layoutX="450.0" layoutY="44.0" prefHeight="338.0" prefWidth="390.0">
+            <TableView fx:id="tableNotasDia" editable="true" layoutX="450.0" layoutY="44.0" prefHeight="338.0" prefWidth="390.0">
                <columns>
                   <TableColumn fx:id="tableColumnCodigoNotaFiscalDia" prefWidth="115.99996185302734" text="Código" />
                   <TableColumn fx:id="tableColumnDataNotaFiscalDia" prefWidth="272.0" text="Data Venda" />
@@ -68,7 +68,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldTotalVendidoNotaDia" disable="true" layoutX="38.0" layoutY="139.0" prefHeight="40.0" prefWidth="316.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+            <TextField fx:id="textFieldTotalVendidoNotaDia" editable="false" layoutX="38.0" layoutY="139.0" prefHeight="40.0" prefWidth="316.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -78,7 +78,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldQuantidadeNotas" disable="true" layoutX="38.0" layoutY="218.0" prefHeight="40.0" prefWidth="316.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+            <TextField fx:id="textFieldQuantidadeNotas" editable="false" layoutX="38.0" layoutY="218.0" prefHeight="40.0" prefWidth="316.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -92,7 +92,7 @@
       </Pane>
       <Pane fx:id="paneInformacoesUmaNota" layoutX="19.0" layoutY="148.0" pickOnBounds="false" prefHeight="442.0" prefWidth="830.0" visible="false">
          <children>
-            <TableView fx:id="tableProdutos" disable="true" layoutX="21.0" layoutY="112.0" prefHeight="302.0" prefWidth="789.0">
+            <TableView fx:id="tableProdutos" layoutX="21.0" layoutY="112.0" prefHeight="302.0" prefWidth="789.0">
                <columns>
                   <TableColumn fx:id="tableColumnCodigo" prefWidth="89.5999984741211" text="Código" />
                   <TableColumn fx:id="tableColumnNome" prefWidth="225.5999755859375" text="Nome Produto" />
@@ -111,13 +111,13 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <DatePicker fx:id="datePickerVenda" disable="true" layoutX="466.0" layoutY="51.0" prefHeight="40.0" prefWidth="134.0" />
+            <DatePicker fx:id="datePickerVenda" editable="false" layoutX="466.0" layoutY="51.0" prefHeight="40.0" prefWidth="134.0" />
             <Label layoutX="466.0" layoutY="26.0" text="Data Venda" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldTotalVendidoNota" disable="true" layoutX="616.0" layoutY="51.0" prefHeight="40.0" prefWidth="194.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+            <TextField fx:id="textFieldTotalVendidoNota" editable="false" layoutX="616.0" layoutY="51.0" prefHeight="40.0" prefWidth="194.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
                <font>
                   <Font size="18.0" />
                </font>

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -41,7 +40,7 @@
       </TableView>
       <Pane fx:id="paneCamposProduto" layoutX="34.0" layoutY="162.0" prefHeight="436.0" prefWidth="838.0" visible="false">
          <children>
-            <TextField fx:id="textFieldNome" disable="true" layoutX="6.0" layoutY="102.0" prefHeight="25.0" prefWidth="810.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+            <TextField fx:id="textFieldNome" editable="false" layoutX="6.0" layoutY="102.0" prefHeight="25.0" prefWidth="810.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -51,7 +50,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldQuantidade" disable="true" layoutX="6.0" layoutY="171.0" prefHeight="30.0" prefWidth="419.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+            <TextField fx:id="textFieldQuantidade" editable="false" layoutX="6.0" layoutY="171.0" prefHeight="30.0" prefWidth="419.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -91,7 +90,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldPreco" disable="true" layoutX="6.0" layoutY="237.0" prefHeight="40.0" prefWidth="419.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+            <TextField fx:id="textFieldPreco" editable="false" layoutX="6.0" layoutY="237.0" prefHeight="40.0" prefWidth="419.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -111,12 +110,16 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <TextArea fx:id="textFieldDescricao" disable="true" layoutX="6.0" layoutY="304.0" prefHeight="54.0" prefWidth="810.0" />
             <Label layoutX="6.0" layoutY="279.0" text="Descrição do produto" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
+            <TextField fx:id="textFieldDescricao" editable="false" layoutX="6.0" layoutY="304.0" prefHeight="40.0" prefWidth="810.0" style="-fx-background-radius: 5; -fx-background-color: #b3b3b3;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
          </children>
       </Pane>
       <ImageView fx:id="btnVoltar" fitHeight="50.0" fitWidth="50.0" layoutX="34.0" layoutY="26.0" onMouseClicked="#voltarParaPrincipal" onMouseEntered="#hoverBtnVoltar" onMouseExited="#notHoverBtnVoltar">
