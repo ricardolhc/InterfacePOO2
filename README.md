@@ -64,3 +64,23 @@ Tratamento de exceções [2 pontos]
 Documentação Javadoc [1 ponto]
 
 <b>Todo o sistema deve observar os conceitos da orientação a objetos.</b>
+
+### Screenshots do projeto finalizado
+
+**Adicionando produto** 
+![Adicionando produto](project-images\adicionando-produto.png)
+
+**Visualizar informações completas de todos os produtos**
+![Visualização completa de todos os produtos adicionados](project-images\visualizar-informacoes-completas.png)
+
+**Nova venda**
+![Realizando uma nova venda](project-images\nova-venda.png)
+
+**Venda realizada**
+![Venda finalizada](project-images/venda-realizada.png)
+
+**Alterar venda**
+![Alterando venda](project-images\alterar-venda.png)
+
+**Visualização informações de um dia específico**
+![Visualização completa de vendas de um dia específico](project-images/informacoes-venda-dia.png)
