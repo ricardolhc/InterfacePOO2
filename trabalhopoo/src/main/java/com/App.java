@@ -11,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 
 import javafx.stage.Stage;
 
@@ -35,7 +34,6 @@ public class App extends Application {
         System.out.println("Iniciando aplicação");
 
         final String viewInicial = "views/viewIndex.fxml";
-        final String pngIcon = "com/views/images/pngIcon.png";
         final String tituloApp = "Mercado Central";
         final boolean telaResizable = false;
 
@@ -51,7 +49,6 @@ public class App extends Application {
             controller.setListaNotaFiscal(listaNotaFiscal);
             controller.setListaProdutos(listaProdutos);
 
-            primaryStage.getIcons().add(new Image(pngIcon));
             primaryStage.setTitle(tituloApp);
             primaryStage.setScene(tela);
             primaryStage.setResizable(telaResizable);

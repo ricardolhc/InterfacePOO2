@@ -189,6 +189,7 @@ public class ControllerAlterarNotaFiscal {
         tableColumnNome.setCellValueFactory(new PropertyValueFactory<Item, String>("nome"));
         tableColumnPreco.setCellValueFactory(new PropertyValueFactory<Item, Double>("preco"));
         tableColumnQuantidade.setCellValueFactory(new PropertyValueFactory<Item, Integer>("quantidade"));
+        tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<Item, String>("descricao"));
 
         listaNotaFiscal = ControllerMenuPrincipal.getListaNotaFiscal();
         listaProdutos = ControllerMenuPrincipal.getListaProdutos();
