@@ -426,9 +426,6 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     void procurarNotaFiscalDia(ActionEvent event) {
-
-
-
         try {
 
             LocalDate localDate;
@@ -468,7 +465,7 @@ public class ControllerVisualizaVenda {
             }
 
             tableNotasDia.setItems(observableList);
-            textFieldTotalVendidoNotaDia.setText(totalNotas + "");
+            textFieldTotalVendidoNotaDia.setText("R$" + String.format("%.2f", totalNotas));
             textFieldQuantidadeNotas.setText(notasFicais.size() + "");
 
         } catch (CampoVazioException | NotaFiscalNotFoundException | DataNotSupportedException | ListaVaziaException e) {
@@ -541,8 +538,7 @@ public class ControllerVisualizaVenda {
             }
 
             datePickerVenda.setValue(dataLocalDate);
-            textFieldTotalVendidoNota.clear();
-            textFieldTotalVendidoNota.setText(totalVendaNotaFiscal + "");
+            textFieldTotalVendidoNota.setText(String.format("%.2f", totalVendaNotaFiscal));
             tableProdutos.setItems(observableList);
 
         } catch (CodigoNotaFiscalNotSupportedException | CampoVazioException | NotaFiscalNotFoundException | ListaVaziaException e) {

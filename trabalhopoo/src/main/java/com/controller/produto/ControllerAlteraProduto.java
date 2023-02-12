@@ -212,14 +212,13 @@ public class ControllerAlteraProduto {
                 quantidadeProduto = (int) produto.getQuantidade();
                 radioButtonUnidade.setSelected(true);
                 radioButtonFracionado.setSelected(false);
+                textFieldQuantidade.setText((int) quantidadeProduto + "");
             } else {
                 quantidadeProduto = produto.getQuantidade();
                 radioButtonFracionado.setSelected(true);
                 radioButtonUnidade.setSelected(false);
+                textFieldQuantidade.setText(quantidadeProduto + "");
             }
-
-            textFieldQuantidade.setText(quantidadeProduto + "");
-
         } catch (CodigoProdutoNotSupportedException | CampoVazioException | ProdutoNotFoundException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         } catch (Exception e) {

@@ -20,27 +20,6 @@ public class ProdutoUnidade extends Produto {
     } 
 
     /**
-    * Segundo construtor da classe ProdutoUnidade.
-    * @param nome Nome do produto.
-    * @param preco Preco do produto.
-    * @param quantidade Quantidade do produto.
-    * @param descricao Descricao do produto.
-    */
-    public ProdutoUnidade(String nome, double preco, double quantidade, String descricao) {
-        super(nome, preco, quantidade, descricao);
-
-        try {
-            int quantidadeInt = (int) quantidade;
-
-            if (quantidadeInt != quantidade) {
-                throw new Exception("Quantidade inválida");
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
-    }
-
-    /**
     @param quantidade double que identifica a quantidade do item
     */
     public void setQuantidade(int quantidade) { super.setQuantidade(quantidade); }

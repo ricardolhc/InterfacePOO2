@@ -2,7 +2,9 @@ package com;
 
 import com.listas.ListaProdutos;
 import com.listas.ListaNotaFiscal;
-
+import com.baseclasse.Produto;
+import com.baseclasse.ProdutoFracionado;
+import com.baseclasse.ProdutoUnidade;
 import com.controller.ControllerMenuPrincipal;
 
 import javafx.application.Application;
@@ -44,6 +46,16 @@ public class App extends Application {
 
             ListaProdutos listaProdutos = new ListaProdutos();
             ListaNotaFiscal listaNotaFiscal = new ListaNotaFiscal();
+
+            Produto produto1 = new ProdutoUnidade("Caneta Bic Azul (Unidade)", 10, 5, "Caneta esferográfica");
+            Produto produto2 = new ProdutoUnidade("Caneta Bic Azul (Caixa)", 10, 5, "Caneta esferográfica");
+            Produto produto3 = new ProdutoFracionado("Tecido azul (MT)", 10, 7.5, "Tecido de algodão");
+            Produto produto4 = new ProdutoFracionado("Tecido vermelho (MT)", 15, 10, "Tecido de algodão");
+
+            listaProdutos.addProduto(produto1);
+            listaProdutos.addProduto(produto2);
+            listaProdutos.addProduto(produto3);
+            listaProdutos.addProduto(produto4);
 
             ControllerMenuPrincipal controller = fxmlLoader.getController();
             controller.setListaNotaFiscal(listaNotaFiscal);

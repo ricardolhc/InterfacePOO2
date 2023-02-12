@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.notafiscal.ControllerRemoverNotaFiscal">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #03071e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.notafiscal.ControllerRemoverNotaFiscal">
    <children>
       <Label layoutX="313.0" layoutY="27.0" prefHeight="54.0" prefWidth="274.0" text="Remover Venda" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldCodigo" layoutX="218.0" layoutY="234.0" prefHeight="46.0" prefWidth="482.0" promptText="Digite o código da nota fiscal" style="-fx-background-radius: 35; -fx-background-color: white;">
+      <TextField fx:id="textFieldCodigo" layoutX="218.0" layoutY="234.0" prefHeight="46.0" prefWidth="482.0" promptText="Digite o código da nota fiscal" style="-fx-background-radius: 5; -fx-background-color: white;">
          <font>
             <Font size="20.0" />
          </font>
@@ -30,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="230.0" layoutY="202.0" text="Código" textFill="WHITE">
+      <Label layoutX="218.0" layoutY="202.0" text="Código" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
