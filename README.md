@@ -68,19 +68,19 @@ Documentação Javadoc [1 ponto]
 ### Screenshots do projeto finalizado
 
 **Adicionando produto** 
-![Adicionando produto](project-images\adicionando-produto.png)
+![Adicionando produto](project-images/adicionando-produto.png)
 
 **Visualizar informações completas de todos os produtos**
-![Visualização completa de todos os produtos adicionados](project-images\visualizar-informacoes-completas.png)
+![Visualização completa de todos os produtos adicionados](project-images/visualizar-informacoes-completas.png)
 
 **Nova venda**
-![Realizando uma nova venda](project-images\nova-venda.png)
+![Realizando uma nova venda](project-images/nova-venda.png)
 
 **Venda realizada**
 ![Venda finalizada](project-images/venda-realizada.png)
 
 **Alterar venda**
-![Alterando venda](project-images\alterar-venda.png)
+![Alterando venda](project-images/alterar-venda.png)
 
 **Visualização informações de um dia específico**
 ![Visualização completa de vendas de um dia específico](project-images/informacoes-venda-dia.png)
