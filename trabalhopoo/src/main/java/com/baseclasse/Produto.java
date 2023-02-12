@@ -6,7 +6,7 @@ package com.baseclasse;
  * @since jan 2023
  * @version 1.0
  */
-public class Produto {
+public abstract class Produto {
 
     private int codigo;
     private String nome;
