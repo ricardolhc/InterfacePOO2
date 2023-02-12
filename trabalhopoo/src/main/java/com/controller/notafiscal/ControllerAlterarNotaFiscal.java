@@ -15,11 +15,15 @@ import com.baseclasse.ProdutoUnidade;
 
 import com.controller.ControllerMenuPrincipal;
 import com.exceptions.geral.CampoVazioException;
+import com.exceptions.lista.ListaVaziaException;
 import com.exceptions.notafiscal.CodigoNotaFiscalNotSupportedException;
+import com.exceptions.notafiscal.DataNotSupportedException;
 import com.exceptions.notafiscal.NotaFiscalNotFoundException;
+import com.exceptions.produto.AddQuantidadeNotSupportedException;
 import com.exceptions.produto.CodigoProdutoNotSupportedException;
 import com.exceptions.produto.ProdutoNotFoundException;
 import com.exceptions.produto.QuantidadeNotSupportedException;
+import com.exceptions.produto.SubQuantidadeNotSupportedException;
 import com.listas.ListaNotaFiscal;
 import com.listas.ListaProdutos;
 
@@ -240,7 +244,7 @@ public class ControllerAlterarNotaFiscal {
         try {
 
             int codigoNFInt = 0;
-            int codigoProdutoInt = 0; 
+            int codigoProdutoInt = 0;
 
             boolean flag = true;
 
@@ -351,7 +355,7 @@ public class ControllerAlterarNotaFiscal {
             }
 
             if (flag) {
-                if (listaProdutos.getProduto(codigoProdutoInt).getQuantidade() < quantidadeDouble - quantidadeNFAntes) {
+                if (produto.getQuantidade() < quantidadeDouble - quantidadeNFAntes) {
                     throw new QuantidadeNotSupportedException(
                             "Quantidade de produtos no estoque é menor que a quantidade que deseja vender");
                 }
@@ -392,20 +396,23 @@ public class ControllerAlterarNotaFiscal {
             Instant instant = null;
             LocalDate dataLocalDate = null;
 
-            ObservableList<Item> listaProdutosNotaFiscal = FXCollections.observableArrayList();;
+            ObservableList<Item> listaProdutosNotaFiscal = FXCollections.observableArrayList();
+            ;
 
             if (codigo.trim().isEmpty() || codigo == null) {
-                throw new Exception("Campo código deve ser preenchido com um número inteiro");
+                throw new CampoVazioException("Campo código deve ser preenchido com um número inteiro");
             }
 
             try {
                 codigoInt = Integer.parseInt(codigo);
             } catch (Exception e) {
-                throw new Exception("Campo código deve ser preenchido com um número inteiro");
+                throw new CodigoNotaFiscalNotSupportedException(
+                        "Campo código deve ser preenchido com um número inteiro");
             }
 
             if (codigoInt <= 0) {
-                throw new Exception("Campo código deve ser preenchido com um número inteiro");
+                throw new CodigoNotaFiscalNotSupportedException(
+                        "Campo código deve ser preenchido com um número inteiro");
             }
 
             try {
@@ -429,8 +436,12 @@ public class ControllerAlterarNotaFiscal {
 
             tableProdutos.setItems(listaProdutosNotaFiscal);
             listaItemAntes = notaFiscal.getItens();
-        } catch (Exception e) {
+
+        } catch (CampoVazioException | CodigoNotaFiscalNotSupportedException | NotaFiscalNotFoundException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -444,8 +455,11 @@ public class ControllerAlterarNotaFiscal {
         try {
             int selectedIndex = tableProdutos.getSelectionModel().getSelectedIndex();
             tableProdutos.getItems().remove(selectedIndex);
-        } catch (Exception e) {
+        } catch (IndexOutOfBoundsException e) {
             alertInterface("ERRO", "Selecione um item para remover", AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -471,25 +485,27 @@ public class ControllerAlterarNotaFiscal {
             Calendar dataCalendar = null;
 
             if (codigoNF.trim().isEmpty() || codigoNF == null) {
-                throw new Exception("Campo código não pode ser vazio");
+                throw new CampoVazioException("Campo código não pode ser vazio");
             }
 
             try {
                 codigoNFInt = Integer.parseInt(codigoNF);
             } catch (Exception e) {
-                throw new Exception("Campo código deve ser preenchido com um número inteiro");
+                throw new CodigoNotaFiscalNotSupportedException(
+                        "Campo código deve ser preenchido com um número inteiro");
             }
 
             if (codigoNFInt <= 0) {
-                throw new Exception("Campo código deve ser preenchido com um número positivo");
+                throw new CodigoNotaFiscalNotSupportedException(
+                        "Campo código deve ser preenchido com um número positivo");
             }
 
             if (tableProdutos.getItems().size() == 0) {
-                throw new Exception("Não é possível salvar uma nota fiscal sem produtos");
+                throw new ListaVaziaException("Não é possível salvar uma nota fiscal sem produtos");
             }
 
             if (datePickerVenda.getValue() == null) {
-                throw new Exception("Campo data deve ser preenchido");
+                throw new DataNotSupportedException("Campo data deve ser preenchido");
             }
 
             try {
@@ -499,14 +515,21 @@ public class ControllerAlterarNotaFiscal {
             }
 
             for (Item item : listaItemAntes.getArray()) {
-                listaProdutos.addQuantidade(item.getCodigo(), item.getQuantidade());
+                try {
+                    listaProdutos.addQuantidade(item.getCodigo(), item.getQuantidade());
+                } catch (Exception e) {
+                    throw e;
+                }
             }
 
             for (int i = 0; i < tableProdutos.getItems().size(); i++) {
                 Item item = tableProdutos.getItems().get(i);
-
-                listaProdutos.subQuantidade(item.getCodigo(), item.getQuantidade());
-                listaItem.addItem(item);
+                try {
+                    listaProdutos.subQuantidade(item.getCodigo(), item.getQuantidade());
+                    listaItem.addItem(item);
+                } catch (Exception e) {
+                    throw e;
+                }
             }
 
             localDate = datePickerVenda.getValue();
@@ -526,8 +549,14 @@ public class ControllerAlterarNotaFiscal {
             textFieldQuantidade.clear();
             datePickerVenda.setValue(null);
             tableProdutos.getItems().clear();
-        } catch (Exception e) {
+
+        } catch (CampoVazioException | CodigoNotaFiscalNotSupportedException | NotaFiscalNotFoundException
+                | ListaVaziaException | DataNotSupportedException | ProdutoNotFoundException
+                | SubQuantidadeNotSupportedException | AddQuantidadeNotSupportedException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
+        } catch (Exception e) {
+            alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -571,12 +600,14 @@ public class ControllerAlterarNotaFiscal {
 
     @FXML
     void hoverBtnAdicionar(MouseEvent event) {
-        btnAdicionarProduto.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
+        btnAdicionarProduto.setStyle(
+                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     @FXML
     void hoverBtnAlterar(MouseEvent event) {
-        btnAlterarProduto.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
+        btnAlterarProduto.setStyle(
+                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
     }
 
     /**
@@ -586,7 +617,8 @@ public class ControllerAlterarNotaFiscal {
      */
     @FXML
     void hoverBtnProcurar(MouseEvent event) {
-        btnProcurar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
+        btnProcurar.setStyle(
+                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
     }
 
     /**
@@ -596,7 +628,8 @@ public class ControllerAlterarNotaFiscal {
      */
     @FXML
     void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #682121;");
+        btnRemover.setStyle(
+                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #682121;");
     }
 
     /**
@@ -606,7 +639,8 @@ public class ControllerAlterarNotaFiscal {
      */
     @FXML
     void hoverBtnSalvar(MouseEvent event) {
-        btnSalvar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
+        btnSalvar.setStyle(
+                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #245823;");
     }
 
     /**

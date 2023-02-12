@@ -346,7 +346,11 @@ public class ControllerAddNotaFiscal {
                 double quantidadeSub = item.getQuantidade();
                 int codigoProduto = item.getCodigo();
 
-                listaProdutos.subQuantidade(codigoProduto, quantidadeSub);
+                try {
+                    listaProdutos.subQuantidade(codigoProduto, quantidadeSub);
+                } catch (Exception e) {
+                    throw e;
+                }
             }
 
             notaFiscal = new NotaFiscal(dataCalendar, listaItem);
@@ -373,7 +377,7 @@ public class ControllerAddNotaFiscal {
 
             mensagemSucesso = "Venda adicionada com sucesso.\n\nCódigo da nota fiscal: " + codigoNotaFiscal +
                     "\nData da venda: " + dataString + "\nVariedade de produtos: " + variedadeProdutos +
-                    "\nTotal da nota fiscal: R$" + totalVendaNotaFiscal;
+                    "\nTotal da nota fiscal: R$" + String.format("%.2f", totalVendaNotaFiscal);
 
             alertInterface("SUCESSO", mensagemSucesso, AlertType.INFORMATION);
 

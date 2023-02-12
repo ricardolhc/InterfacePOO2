@@ -132,7 +132,7 @@ public class ControllerAddProduto {
 
             double precoProdutoDouble = 0;
             double quantidadeDouble = 0;
-            
+
             int quantidadeInt = 0;
 
             Produto produto = null;
@@ -189,18 +189,24 @@ public class ControllerAddProduto {
 
                 produto = new ProdutoUnidade(nomeProduto, precoProdutoDouble, quantidadeInt, descricaoProduto);
             } else {
-                produto = new ProdutoFracionado(nomeProduto, precoProdutoDouble, quantidadeDouble,
-                        descricaoProduto);
+                produto = new ProdutoFracionado(nomeProduto, precoProdutoDouble, quantidadeDouble, descricaoProduto);
             }
 
             mensagemSucesso = "Produto adicionado com sucesso\nCódigo do produto adicionado: "
                     + produto.getCodigo() + "\nNome do produto: " + nomeProduto + "\nPreço do produto: "
-                    + precoProdutoDouble + "\nQuantidade do produto: " + quantidadeDouble + "\nDescrição do produto: "
+                    + String.format("%.2f", precoProdutoDouble) + "\nQuantidade do produto: " + quantidadeDouble
+                    + "\nDescrição do produto: "
                     + descricaoProduto;
 
-            listaProdutos.addProduto(produto);
-            limparCampos(null);
-            alertInterface("Sucesso", mensagemSucesso, AlertType.INFORMATION);
+
+            try {
+                listaProdutos.addProduto(produto);
+                limparCampos(null);
+                alertInterface("Sucesso", mensagemSucesso, AlertType.INFORMATION);
+            } catch (Exception e) {
+                throw e;
+            }
+        
         } catch (CampoVazioException | AddProdutoException | RadioButtonVazioException | PrecoNotSupportedException
                 | QuantidadeNotSupportedException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);

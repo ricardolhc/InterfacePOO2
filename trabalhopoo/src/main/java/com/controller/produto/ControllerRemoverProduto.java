@@ -122,11 +122,14 @@ public class ControllerRemoverProduto {
             result = alertInterfaceConfirmacao(produto);
                 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                listaProdutos.removeProduto(codigoInt);
-                limparCampos(null);
-                alertInterface("Sucesso!", "Produto com código " + codigoInt  + " removido com sucesso!", AlertType.INFORMATION);
+                try {
+                    listaProdutos.removeProduto(codigoInt);
+                    limparCampos(null);
+                    alertInterface("Sucesso!", "Produto com código " + codigoInt  + " removido com sucesso!", AlertType.INFORMATION);
+                } catch (Exception e) {
+                    throw e;
+                }
             }
-
         } catch (CampoVazioException | CodigoProdutoNotSupportedException | ProdutoNotFoundException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         } catch (Exception e) {
