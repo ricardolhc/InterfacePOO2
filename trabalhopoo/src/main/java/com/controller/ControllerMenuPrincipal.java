@@ -153,7 +153,7 @@ public class ControllerMenuPrincipal {
             rootPane.getChildren().setAll(pane);
         } catch (Exception e) {
             System.out.println(e);
-            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+            alertInterface("ERRO", "Não foi possível entrar na tela de alterar nota fiscal", AlertType.ERROR);
         }
     }
 
@@ -183,7 +183,7 @@ public class ControllerMenuPrincipal {
             rootPane.getChildren().setAll(pane);
         } catch (Exception e) {
             System.out.println(e);
-            alertInterface("ERRO", "Não foi possível entrar na tela de remover produto", AlertType.ERROR);
+            alertInterface("ERRO", "Não foi possível entrar na tela de remover nota fiscal", AlertType.ERROR);
         }
     }
 

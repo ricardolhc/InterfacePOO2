@@ -484,6 +484,8 @@ public class ControllerAlterarNotaFiscal {
             Date date = null;
             Calendar dataCalendar = null;
 
+            final String mensagemSucesso;
+
             if (codigoNF.trim().isEmpty() || codigoNF == null) {
                 throw new CampoVazioException("Campo código não pode ser vazio");
             }
@@ -542,8 +544,10 @@ public class ControllerAlterarNotaFiscal {
             notaFiscal.setData(dataCalendar);
             notaFiscal.setItens(listaItem);
 
-            alertInterface("SUCESSO", "Nota fiscal com o código " + codigoNFInt + " alterada com sucesso!",
-                    AlertType.INFORMATION);
+            mensagemSucesso = "Nota fiscal com o código " + codigoNFInt
+                    + " alterada com sucesso!\nValor total da nota: " + notaFiscal.getTotal();
+
+            alertInterface("SUCESSO", mensagemSucesso, AlertType.INFORMATION);
             textFieldCodigo.clear();
             textFieldCodigoProduto.clear();
             textFieldQuantidade.clear();
@@ -558,6 +562,12 @@ public class ControllerAlterarNotaFiscal {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    void limparCampos(ActionEvent event) {
+        textFieldCodigoProduto.clear();
+        textFieldQuantidade.clear();
     }
 
     /**
@@ -608,6 +618,12 @@ public class ControllerAlterarNotaFiscal {
     void hoverBtnAlterar(MouseEvent event) {
         btnAlterarProduto.setStyle(
                 "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
+    }
+
+    @FXML
+    void hoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle(
+                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
     }
 
     /**
@@ -661,6 +677,11 @@ public class ControllerAlterarNotaFiscal {
     @FXML
     void notHoverBtnProcurar(MouseEvent event) {
         btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 5;");
+    }
+
+    @FXML
+    void notHoverBtnLimpar(MouseEvent event) {
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**

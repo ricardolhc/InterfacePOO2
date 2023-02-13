@@ -34,6 +34,7 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -152,6 +153,9 @@ public class ControllerAddNotaFiscal {
      */
     @FXML
     private DatePicker datePickerVenda;
+
+    @FXML
+    private CheckBox checkBoxDataAtual;
 
     /**
      * listaProdutos usado para receber a lista de produtos
@@ -331,16 +335,18 @@ public class ControllerAddNotaFiscal {
                 throw new ListaVaziaException("Não há itens na lista de itens");
             }
 
-            if (datePickerVenda.getValue() == null) {
+            if(!checkBoxDataAtual.isSelected() && datePickerVenda.getValue() == null){
                 throw new DataNotSupportedException("O campo data não pode estar vazio");
             }
 
-            localDate = datePickerVenda.getValue();
-
-            date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-            dataCalendar = Calendar.getInstance();
-            dataCalendar.setTime(date);
+            if(!checkBoxDataAtual.isSelected()) {
+                localDate = datePickerVenda.getValue();
+                date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                dataCalendar = Calendar.getInstance();
+                dataCalendar.setTime(date);
+            } else {
+                dataCalendar = Calendar.getInstance();
+            }
 
             for (Item item : observableList) {
                 double quantidadeSub = item.getQuantidade();
@@ -434,6 +440,15 @@ public class ControllerAddNotaFiscal {
         } catch (Exception e) {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
             System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    void clickCheckBoxDataAtual(ActionEvent event) {
+        if(checkBoxDataAtual.isSelected()) {
+            datePickerVenda.setDisable(true);
+        } else {
+            datePickerVenda.setDisable(false);
         }
     }
 

@@ -115,7 +115,7 @@ public class ControllerRemoverNotaFiscal {
                     throw e;
                 }
                 limparCampos(null);
-                alertInterface("SUCESSO", "Produto com código " + codigoInt + " removido com sucesso!",
+                alertInterface("SUCESSO", "Nota fiscal com código " + codigoInt + " removido com sucesso!",
                         AlertType.INFORMATION);
             }
 
@@ -191,7 +191,7 @@ public class ControllerRemoverNotaFiscal {
      */
     @FXML
     void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #686868;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5;-fx-text-fill: #686868;");
     }
 
     /**
@@ -201,7 +201,7 @@ public class ControllerRemoverNotaFiscal {
      */
     @FXML
     void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #682121;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnRemover.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #682121;");
     }
 
     /**
@@ -211,7 +211,7 @@ public class ControllerRemoverNotaFiscal {
      */
     @FXML
     void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
@@ -221,7 +221,7 @@ public class ControllerRemoverNotaFiscal {
      */
     @FXML
     void notHoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 50;");
+        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**
