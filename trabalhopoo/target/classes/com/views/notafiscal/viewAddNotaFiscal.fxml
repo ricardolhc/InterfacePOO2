@@ -44,12 +44,12 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnAdicionar" layoutX="430.0" layoutY="121.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="203.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Adicionar Produto" textFill="WHITE">
+      <Button fx:id="btnAdicionar" layoutX="430.0" layoutY="121.0" mnemonicParsing="false" onAction="#adicionarProduto" prefHeight="46.0" prefWidth="203.0" styleClass="greenBtn" stylesheets="@../style.css" text="Adicionar Produto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnLimpar" layoutX="430.0" layoutY="192.0" mnemonicParsing="false" onAction="#limparCampos" onMouseExited="#notHoverBtnLimpar" onMouseMoved="#hoverBtnLimpar" prefHeight="46.0" prefWidth="203.0" style="-fx-background-radius: 5; -fx-background-color: #747474;" text="Limpar" textFill="WHITE">
+      <Button fx:id="btnLimpar" layoutX="430.0" layoutY="192.0" mnemonicParsing="false" onAction="#limparCampos" prefHeight="46.0" prefWidth="203.0" styleClass="grayBtn" stylesheets="@../style.css" text="Limpar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -64,17 +64,17 @@
             <Image url="@../../views/images/pngVoltar.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnConcluir" layoutX="612.0" layoutY="534.0" mnemonicParsing="false" onAction="#adicionarVenda" onMouseExited="#notHoverBtnConcluir" onMouseMoved="#hoverBtnConcluir" prefHeight="46.0" prefWidth="196.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Concluir Venda" textFill="WHITE">
+      <Button fx:id="btnConcluir" layoutX="612.0" layoutY="534.0" mnemonicParsing="false" onAction="#adicionarVenda" prefHeight="46.0" prefWidth="196.0" styleClass="greenBtn" stylesheets="@../style.css" text="Concluir Venda" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnAlterarProduto" layoutX="88.0" layoutY="534.0" mnemonicParsing="false" onAction="#alterarProduto" onMouseExited="#notHoverBtnAlterar" onMouseMoved="#hoverBtnAlterar" prefHeight="46.0" prefWidth="180.0" style="-fx-background-radius: 5; -fx-background-color: #807d0a;" text="Alterar Produto" textFill="WHITE">
+      <Button fx:id="btnAlterarProduto" layoutX="88.0" layoutY="534.0" mnemonicParsing="false" onAction="#alterarProduto" prefHeight="46.0" prefWidth="180.0" styleClass="yellowBtn" stylesheets="@../style.css" text="Alterar Produto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnRemover" layoutX="350.0" layoutY="534.0" mnemonicParsing="false" onAction="#removerProduto" onMouseExited="#notHoverBtnRemover" onMouseMoved="#hoverBtnRemover" prefHeight="46.0" prefWidth="196.0" style="-fx-background-radius: 5; -fx-background-color: #7d2727;" text="Remover Produto" textFill="WHITE">
+      <Button fx:id="btnRemover" layoutX="350.0" layoutY="534.0" mnemonicParsing="false" onAction="#removerProduto" prefHeight="46.0" prefWidth="196.0" styleClass="redBtn" stylesheets="@../style.css" text="Remover Produto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

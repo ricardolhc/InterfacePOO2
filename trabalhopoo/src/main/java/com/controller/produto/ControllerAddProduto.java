@@ -282,50 +282,6 @@ public class ControllerAddProduto {
     }
 
     /**
-     * Efeito de hover ao tirar o mouse do botão de adicionar
-     * 
-     * @param event evento de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle(
-                "-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: white;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle(
-                "-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: white;");
-    }
-
-    /**
-     * Efeito de hover ao passar o mouse no botão de adicionar
-     * 
-     * @param event evento de hover ao passar o mouse no botão
-     */
-    @FXML
-    void hoverBtnAdicionar(MouseEvent event) {
-        btnAdicionar.setStyle(
-                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #2b6b2a;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle(
-                "-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
-    }
-
-    /**
      * Efeito de hover ao passar o mouse no botão de voltar
      * 
      * @param event evento hover ao passar o mouse no botão de voltar

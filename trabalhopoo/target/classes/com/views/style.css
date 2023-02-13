@@ -1,0 +1,82 @@
+.button {
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+}
+
+.redBtn {
+    background-color: #7d2727;
+    -fx-background-color: #7d2727;
+}
+
+.redBtn:hover {
+    -fx-text-fill: #7d2727;
+    background-color: white;
+    -fx-background-color: white;
+    cursor: hand;
+    -fx-cursor: hand;
+}
+
+.grayBtn {
+    background-color: #747474;
+    -fx-background-color: #747474;
+}
+
+.grayBtn:hover {
+    -fx-text-fill: #747474;
+    background-color: white;
+    -fx-background-color: white;
+    cursor: hand;
+    -fx-cursor: hand;
+}
+
+.greenBtn {
+    background-color: #2b6b2a;
+    -fx-background-color: #2b6b2a;
+}
+
+.greenBtn:hover {
+    -fx-text-fill: #2b6b2a;
+    background-color: white;
+    -fx-background-color: white;
+    cursor: hand;
+    -fx-cursor: hand;
+}
+
+.yellowBtn {
+    background-color: #807d0a;
+    -fx-background-color: #807d0a;
+}
+
+.yellowBtn:hover {
+    -fx-text-fill: #807d0a;
+    background-color: white;
+    -fx-background-color: white;
+    cursor: hand;
+    -fx-cursor: hand;
+}
+
+.purpleBtn {
+    background-color: #370617;
+    -fx-background-color: #370617;
+}
+
+.purpleBtn:hover {
+    -fx-text-fill: #370617;
+    background-color: white;
+    -fx-background-color: white;
+    cursor: hand;
+    -fx-cursor: hand;
+}
+
+.pinkBtn {
+    background-color: #5c0a27;
+    -fx-background-color: #5c0a27;
+}
+
+.pinkBtn:hover {
+    -fx-text-fill: #5c0a27;
+    background-color: white;
+    -fx-background-color: white;
+    cursor: hand;
+    -fx-cursor: hand;
+}

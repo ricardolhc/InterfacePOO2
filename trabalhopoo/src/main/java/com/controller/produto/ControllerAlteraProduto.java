@@ -387,61 +387,6 @@ public class ControllerAlteraProduto {
     }
 
     /**
-     * Efeito de hover ao passar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao passar o mouse do botão
-     */
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
-    }
-
-    /**
-     * Efeito de hover ao passar o mouse do botão de procurar
-     * 
-     * @param event efeito de hover ao passar o mouse do botão
-     */
-    @FXML
-    void hoverBtnProcurar(MouseEvent event) {
-        btnProcurar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #676508;");
-    }
-
-    @FXML
-    void hoverBtnSalvar(MouseEvent event) {
-        btnSalvar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #2b6b2a;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse no botão de procurar
-     * 
-     * @param event evento de hover ao passar o mouse no botão
-     */
-    @FXML
-    void notHoverBtnProcurar(MouseEvent event) {
-        btnProcurar.setStyle("-fx-background-color: #807d0a;-fx-cursor: hand; -fx-background-radius: 5;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse no botão de salvar
-     * 
-     * @param event evento de hover ao passar o mouse no botão
-     */
-    @FXML
-    void notHoverBtnSalvar(MouseEvent event) {
-        btnSalvar.setStyle("-fx-background-color: #2b6b2a;-fx-cursor: hand; -fx-background-radius: 5;");
-    }
-
-    /**
      * Efeito de hover ao tirar o mouse no botão de voltar
      * 
      * @param event evento de hover ao passar o mouse no botão

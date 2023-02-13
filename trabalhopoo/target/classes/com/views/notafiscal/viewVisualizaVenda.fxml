@@ -19,12 +19,12 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnInformacaoDiaEspecifico" layoutX="584.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoDiaEspecifico" onMouseExited="#notHoverBtnInformacaoDiaEspecifico" onMouseMoved="#hoverBtnInformacaoDiaEspecifico" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Informações de um dia específico" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnInformacaoDiaEspecifico" layoutX="584.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoDiaEspecifico" prefHeight="70.0" prefWidth="211.0" styleClass="greenBtn" stylesheets="@../style.css" text="Informações de um dia específico" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnInformacaoNotaFiscal" layoutX="98.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoUmaNota" onMouseExited="#notHoverbtnInformacaoNotaFiscal" onMouseMoved="#hoverbtnInformacaoNotaFiscal" prefHeight="70.0" prefWidth="194.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Informações de uma Nota Fiscal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnInformacaoNotaFiscal" layoutX="98.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoUmaNota" prefHeight="70.0" prefWidth="194.0" styleClass="greenBtn" stylesheets="@../style.css" text="Informações de uma Nota Fiscal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -34,7 +34,7 @@
             <Image url="@../../views/images/pngVoltar.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnInformacaoTodasNotas" layoutX="337.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoTodasNotas" onMouseExited="#notHoverBtnInformacaoTodasNotas" onMouseMoved="#hoverBtnInformacaoTodasNotas" prefHeight="70.0" prefWidth="211.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Informações de todas as Notas Fiscais" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnInformacaoTodasNotas" layoutX="334.0" layoutY="87.0" mnemonicParsing="false" onAction="#informacaoTodasNotas" prefHeight="70.0" prefWidth="211.0" styleClass="greenBtn" stylesheets="@../style.css" text="Informações de todas as Notas Fiscais" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -51,7 +51,7 @@
       </Pane>
       <Pane fx:id="paneDiaEspecifico" layoutY="186.0" prefHeight="414.0" prefWidth="900.0" visible="false">
          <children>
-            <Button fx:id="btnProcurarNotaFiscalDia" layoutX="219.0" layoutY="51.0" mnemonicParsing="false" onAction="#procurarNotaFiscalDia" onMouseExited="#notHoverBtnProcurarNotaFiscalDia" onMouseMoved="#hoverBtnProcurarNotaFiscalDia" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Procurar" textFill="WHITE">
+            <Button fx:id="btnProcurarNotaFiscalDia" layoutX="219.0" layoutY="51.0" mnemonicParsing="false" onAction="#procurarNotaFiscalDia" prefHeight="46.0" prefWidth="134.0" styleClass="greenBtn" stylesheets="@../style.css" text="Procurar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -127,7 +127,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="btnProcurarNotaFiscalUnica" layoutX="305.0" layoutY="50.0" mnemonicParsing="false" onAction="#procurarNotaFiscalUnica" onMouseExited="#notHoverBtnProcurarNotaFiscalUnica" onMouseMoved="#hoverBtnProcurarNotaFiscalUnica" prefHeight="43.0" prefWidth="111.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Procurar" textFill="WHITE">
+            <Button fx:id="btnProcurarNotaFiscalUnica" layoutX="305.0" layoutY="50.0" mnemonicParsing="false" onAction="#procurarNotaFiscalUnica" prefHeight="43.0" prefWidth="111.0" styleClass="greenBtn" stylesheets="@../style.css" text="Procurar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

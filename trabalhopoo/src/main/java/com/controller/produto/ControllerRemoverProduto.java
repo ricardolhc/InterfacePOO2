@@ -191,42 +191,6 @@ public class ControllerRemoverProduto {
     }
 
     /**
-     * Efeito de hover ao passar o mouse do botão de limpar
-     * @param event efeito de hover ao passar o mouse do botão
-     */
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #747474;");
-    }
-
-    /**
-     * Efeito de hover ao passar o mouse do botão de remover
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #7d2727;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 5;");
-    }
-
-    /**
      * Efeito de hover ao tirar o mouse no botão de voltar
      * @param event evento de hover ao passar o mouse no botão
      */

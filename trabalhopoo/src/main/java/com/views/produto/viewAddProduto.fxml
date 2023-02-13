@@ -41,12 +41,12 @@
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <Button fx:id="btnAdicionar" layoutX="514.0" layoutY="520.0" mnemonicParsing="false" onAction="#adicionarProduto" onMouseExited="#notHoverBtnAdicionar" onMouseMoved="#hoverBtnAdicionar" prefHeight="46.0" prefWidth="134.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Adicionar" textFill="WHITE">
+      <Button fx:id="btnAdicionar" layoutX="514.0" layoutY="520.0" mnemonicParsing="false" onAction="#adicionarProduto" prefHeight="46.0" prefWidth="134.0" styleClass="greenBtn" stylesheets="@../style.css" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnLimpar" layoutX="289.0" layoutY="520.0" mnemonicParsing="false" onAction="#limparCampos" onMouseExited="#notHoverBtnLimpar" onMouseMoved="#hoverBtnLimpar" prefHeight="46.0" prefWidth="133.0" style="-fx-background-radius: 5; -fx-background-color: #747474;" text="Limpar" textFill="WHITE">
+      <Button fx:id="btnLimpar" layoutX="289.0" layoutY="520.0" mnemonicParsing="false" onAction="#limparCampos" prefHeight="46.0" prefWidth="133.0" styleClass="grayBtn" stylesheets="@../style.css" text="Limpar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

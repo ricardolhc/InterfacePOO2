@@ -3,6 +3,7 @@ package com.controller.notafiscal;
 import java.util.Optional;
 
 import com.controller.ControllerMenuPrincipal;
+import com.exceptions.geral.CampoVazioException;
 import com.exceptions.notafiscal.CodigoNotaFiscalNotSupportedException;
 import com.exceptions.notafiscal.NotaFiscalNotFoundException;
 import com.listas.ListaNotaFiscal;
@@ -93,17 +94,17 @@ public class ControllerRemoverNotaFiscal {
             Optional<ButtonType> result = null;
 
             if (codigo.trim().isEmpty() || codigo == null) {
-                throw new Exception("Preencha o campo de código!");
+                throw new CampoVazioException("Preencha o campo de código!");
             }
 
             try {
                 codigoInt = Integer.parseInt(codigo);
             } catch (Exception e) {
-                throw new Exception("O código deve ser um número inteiro!");
+                throw new CodigoNotaFiscalNotSupportedException("O código deve ser um número inteiro!");
             }
 
             if (codigoInt <= 0) {
-                throw new Exception("O código deve ser um número inteiro positivo!");
+                throw new CodigoNotaFiscalNotSupportedException("O código deve ser um número inteiro positivo!");
             }
 
             result = alertInterfaceConfirmacao();
@@ -119,7 +120,7 @@ public class ControllerRemoverNotaFiscal {
                         AlertType.INFORMATION);
             }
 
-        } catch (CodigoNotaFiscalNotSupportedException | NotaFiscalNotFoundException e) {
+        } catch (CodigoNotaFiscalNotSupportedException | NotaFiscalNotFoundException | CampoVazioException e) {
             alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
         } catch (Exception e) {
             alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
@@ -182,46 +183,6 @@ public class ControllerRemoverNotaFiscal {
     @FXML
     void limparCampos(ActionEvent event) {
         textFieldCodigo.clear();
-    }
-
-    /**
-     * Efeito de hover ao passar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao passar o mouse do botão
-     */
-    @FXML
-    void hoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5;-fx-text-fill: #686868;");
-    }
-
-    /**
-     * Efeito de hover ao passar o mouse do botão de remover
-     * 
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void hoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: white;-fx-cursor: hand; -fx-background-radius: 5; -fx-text-fill: #682121;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnLimpar(MouseEvent event) {
-        btnLimpar.setStyle("-fx-background-color: #747474;-fx-cursor: hand; -fx-background-radius: 5;");
-    }
-
-    /**
-     * Efeito de hover ao tirar o mouse do botão de limpar
-     * 
-     * @param event efeito de hover ao tirar o mouse do botão
-     */
-    @FXML
-    void notHoverBtnRemover(MouseEvent event) {
-        btnRemover.setStyle("-fx-background-color: #7d2727;-fx-cursor: hand; -fx-background-radius: 5;");
     }
 
     /**

@@ -57,17 +57,17 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnSalvar" layoutX="438.0" layoutY="524.0" mnemonicParsing="false" onAction="#salvarAlteracaoProduto" onMouseExited="#notHoverBtnSalvar" onMouseMoved="#hoverBtnSalvar" prefHeight="46.0" prefWidth="187.0" style="-fx-background-radius: 5; -fx-background-color: #2b6b2a;" text="Salvar alterações" textFill="WHITE">
+      <Button fx:id="btnSalvar" layoutX="438.0" layoutY="524.0" mnemonicParsing="false" onAction="#salvarAlteracaoProduto" prefHeight="46.0" prefWidth="187.0" styleClass="greenBtn" stylesheets="@../style.css" text="Salvar alterações" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnLimpar" layoutX="268.0" layoutY="524.0" mnemonicParsing="false" onAction="#limparCampos" onMouseExited="#notHoverBtnLimpar" onMouseMoved="#hoverBtnLimpar" prefHeight="46.0" prefWidth="133.0" style="-fx-background-radius: 5; -fx-background-color: #747474;" text="Limpar" textFill="WHITE">
+      <Button fx:id="btnLimpar" layoutX="268.0" layoutY="524.0" mnemonicParsing="false" onAction="#limparCampos" prefHeight="46.0" prefWidth="133.0" styleClass="grayBtn" stylesheets="@../style.css" text="Limpar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnProcurar" layoutX="501.0" layoutY="107.0" mnemonicParsing="false" onAction="#procurarProduto" onMouseExited="#notHoverBtnProcurar" onMouseMoved="#hoverBtnProcurar" prefHeight="44.0" prefWidth="196.0" style="-fx-background-radius: 5; -fx-background-color: #807d0a;" text="Procurar produto" textFill="WHITE">
+      <Button fx:id="btnProcurar" layoutX="501.0" layoutY="107.0" mnemonicParsing="false" onAction="#procurarProduto" prefHeight="44.0" prefWidth="196.0" styleClass="yellowBtn" stylesheets="@../style.css" text="Procurar produto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
