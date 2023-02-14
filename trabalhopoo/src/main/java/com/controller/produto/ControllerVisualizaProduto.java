@@ -287,27 +287,26 @@ public class ControllerVisualizaProduto {
         mostrarEsconderTabela = !mostrarEsconderTabela;
 
         if(tableViewInfoCompleta.isVisible()) {
-            ObservableList<Produto> observableList = FXCollections.observableArrayList();
 
             try {
+
+                ObservableList<Produto> observableList = null;
 
                 if(listaProdutos.isEmpty()) {
                     throw new ListaVaziaException("Não há produtos cadastrados");
                 }
-        
-                for(Produto produto : listaProdutos.getArray()) {
-                    observableList.add(produto);
-                }
 
+                observableList = FXCollections.observableArrayList(listaProdutos.getArray());
+                tableViewInfoCompleta.setItems(observableList);
+        
             } catch (ListaVaziaException e) {
                 alertInterface("ERRO", e.getMessage(), AlertType.ERROR);	
             } catch (Exception e) {
                 alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
                 System.out.println(e.getMessage());
             }
-
-            tableViewInfoCompleta.setItems(observableList);
-        } 
+   
+        }
     }
 
     /**

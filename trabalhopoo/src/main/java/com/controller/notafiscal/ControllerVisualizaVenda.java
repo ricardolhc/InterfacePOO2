@@ -377,24 +377,27 @@ public class ControllerVisualizaVenda {
         informacoesTodasNotasFiscais = !informacoesTodasNotasFiscais;
 
         if (paneTodasNotas.isVisible()) {
-            ObservableList<NotaFiscal> observableList = FXCollections.observableArrayList();
+            
+
+            // NAO FAZER O LAÇO FOR EACH ABAIXO, BASTA COLOCAR A ARRAYLIST DENTOR DOS PARENTESES DA OBSERVABLE LIST
 
             try {
+
+                ObservableList<NotaFiscal> observableList = null;
+                
                 if (listaNotaFiscal.isEmpty()) {
                     throw new ListaVaziaException("Não há notas fiscais cadastradas");
                 }
 
-                for (NotaFiscal notaFiscal : listaNotaFiscal.getArray()) {
-                    observableList.add(notaFiscal);
-                }
+                observableList = FXCollections.observableArrayList(listaNotaFiscal.getArray());
+
+                tableTodasNotas.setItems(observableList);
             } catch (ListaVaziaException e) {
                 alertInterface("ERRO", e.getMessage(), AlertType.ERROR);
             } catch (Exception e) {
                 alertInterface("ERRO", "Ocorreu um erro inesperado", AlertType.ERROR);
                 System.out.println(e.getMessage());
             }
-
-            tableTodasNotas.setItems(observableList);
         }
     }
 
@@ -428,11 +431,11 @@ public class ControllerVisualizaVenda {
     void procurarNotaFiscalDia(ActionEvent event) {
         try {
 
-            LocalDate localDate;
-            Date date;
-            Calendar dataCalendar;
-            ArrayList<NotaFiscal> notasFicais;
-            ObservableList<NotaFiscal> observableList;
+            LocalDate localDate = null;
+            Date date = null;
+            Calendar dataCalendar = null;
+            ArrayList<NotaFiscal> notasFicais = null;
+            ObservableList<NotaFiscal> observableList = null;
 
             double totalNotas = 0;
 
@@ -453,17 +456,18 @@ public class ControllerVisualizaVenda {
                 throw e;
             }
 
-            observableList = FXCollections.observableArrayList();
+            // NAO FAZER O LAÇO FOR EACH ABAIXO, BASTA COLOCAR A ARRAYLIST DENTOR DOS PARENTESES DA OBSERVABLE LIST
+
 
             try {
                 for (NotaFiscal notaFiscal : notasFicais) {
                     totalNotas += notaFiscal.getTotal();
-                    observableList.add(notaFiscal);
                 }
             } catch (Exception e) {
                 throw e;
             }
 
+            observableList = FXCollections.observableArrayList(notasFicais);
             tableNotasDia.setItems(observableList);
             textFieldTotalVendidoNotaDia.setText("R$" + String.format("%.2f", totalNotas));
             textFieldQuantidadeNotas.setText(notasFicais.size() + "");
@@ -497,9 +501,7 @@ public class ControllerVisualizaVenda {
             Instant instant = null;
             LocalDate dataLocalDate = null;
 
-            ObservableList<Item> observableList = FXCollections.observableArrayList();
-
-         
+            ObservableList<Item> observableList = null;
 
             if (codigoNF.trim().isEmpty() || codigoNF == null) {
                 throw new CampoVazioException("O campo de código da nota fiscal não pode estar vazio");
@@ -533,9 +535,7 @@ public class ControllerVisualizaVenda {
 
             listaItem = notaFiscal.getItens();
 
-            for (Item item : listaItem.getArray()) {
-                observableList.add(item);
-            }
+            observableList = FXCollections.observableArrayList(listaItem.getArray());
 
             datePickerVenda.setValue(dataLocalDate);
             textFieldTotalVendidoNota.setText(String.format("%.2f", totalVendaNotaFiscal));

@@ -2,9 +2,11 @@ package com;
 
 import com.listas.ListaProdutos;
 import com.listas.ListaNotaFiscal;
+
 import com.baseclasse.Produto;
 import com.baseclasse.ProdutoFracionado;
 import com.baseclasse.ProdutoUnidade;
+
 import com.controller.ControllerMenuPrincipal;
 
 import javafx.application.Application;

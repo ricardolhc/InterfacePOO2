@@ -396,7 +396,7 @@ public class ControllerAlterarNotaFiscal {
             Instant instant = null;
             LocalDate dataLocalDate = null;
 
-            ObservableList<Item> listaProdutosNotaFiscal = FXCollections.observableArrayList();
+            ObservableList<Item> listaProdutosNotaFiscal = null;
             ;
 
             if (codigo.trim().isEmpty() || codigo == null) {
@@ -429,11 +429,7 @@ public class ControllerAlterarNotaFiscal {
 
             datePickerVenda.setValue(dataLocalDate);
 
-            for (Item item : notaFiscal.getItens().getArray()) {
-                Item itemNotaFiscal = new Item(item.getProduto(), item.getQuantidade());
-                listaProdutosNotaFiscal.add(itemNotaFiscal);
-            }
-
+            listaProdutosNotaFiscal = FXCollections.observableArrayList(notaFiscal.getItens().getArray());
             tableProdutos.setItems(listaProdutosNotaFiscal);
             listaItemAntes = notaFiscal.getItens();
 
