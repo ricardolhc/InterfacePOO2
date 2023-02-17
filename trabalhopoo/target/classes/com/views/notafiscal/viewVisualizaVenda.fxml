@@ -39,12 +39,13 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Pane fx:id="paneTodasNotas" layoutY="186.0" prefHeight="414.0" prefWidth="900.0" visible="false">
+      <Pane fx:id="paneTodasNotas" layoutY="186.0" prefHeight="414.0" prefWidth="900.0">
          <children>
-            <TableView fx:id="tableTodasNotas" layoutX="261.0" layoutY="14.0" prefHeight="338.0" prefWidth="378.0">
+            <TableView fx:id="tableTodasNotas" layoutX="222.0" layoutY="14.0" prefHeight="338.0" prefWidth="456.0">
               <columns>
                 <TableColumn fx:id="tableColumnCodigoNotaFiscalTodas" prefWidth="115.99996185302734" text="Código" />
-                <TableColumn fx:id="tableColumnDataNotaFiscalTodas" prefWidth="261.1999816894531" text="Data Venda" />
+                <TableColumn fx:id="tableColumnDataNotaFiscalTodas" prefWidth="171.0" text="Data Venda" />
+                  <TableColumn fx:id="tableColumnTotalNotaFiscalTodas" prefWidth="166.0" text="Total" />
               </columns>
             </TableView>
          </children>

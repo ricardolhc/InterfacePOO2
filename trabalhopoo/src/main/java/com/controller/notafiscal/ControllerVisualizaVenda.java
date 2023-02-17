@@ -47,7 +47,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import javafx.util.Callback;
-
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 
@@ -169,6 +170,9 @@ public class ControllerVisualizaVenda {
      */
     @FXML
     private TableColumn<NotaFiscal, Calendar> tableColumnDataNotaFiscalTodas;
+
+    @FXML
+    private TableColumn<NotaFiscal, Double> tableColumnTotalNotaFiscalTodas;
 
     /**
      * tableNotasDia usado para mostrar as notas fiscais de um dia específico
@@ -334,6 +338,43 @@ public class ControllerVisualizaVenda {
                         };
                     }
                 });
+
+              
+                tableColumnTotalNotaFiscalTodas.setCellValueFactory(new Callback<CellDataFeatures<NotaFiscal, Double>, ObservableValue<Double>>() {
+                    @Override
+                    public ObservableValue<Double> call(TableColumn.CellDataFeatures<NotaFiscal, Double> features) {
+                        NotaFiscal notaFiscal = features.getValue();
+                        double total = 0.0;
+                        try {
+                            total = notaFiscal.getTotal();
+                        } catch (Exception e) {
+                            total = 0;
+                            System.out.println("Erro ao calcular o total da nota fiscal");
+                        }
+                        DoubleProperty totalProperty = new SimpleDoubleProperty(total);
+                        return totalProperty.asObject();
+                    }
+                });
+
+                tableColumnTotalNotaFiscalTodas.setCellFactory(new Callback<TableColumn<NotaFiscal, Double>, TableCell<NotaFiscal, Double>>() {
+                    @Override
+                    public TableCell<NotaFiscal, Double> call(TableColumn<NotaFiscal, Double> column) {
+                        return new TableCell<NotaFiscal, Double>() {
+                            @Override
+                            protected void updateItem(Double item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty || item == null) {
+                                    setText(null);
+                                } else {
+                                    setText(String.format("R$ %.2f", item));
+                                }
+                            }
+                        };
+                    }
+                });
+                
+
+                
 
         listaNotaFiscal = ControllerMenuPrincipal.getListaNotaFiscal();
     }
